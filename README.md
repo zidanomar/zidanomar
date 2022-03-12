@@ -3,6 +3,17 @@
 
 <br>
 
+<div style="display:flex;" align="center">
+    <a href="https://www.linkedin.com/in/zidan-omar-hamid-611b8221b/" margin-right:10px;">
+      <img src="https://img.shields.io/badge/linkedin-%230077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white">
+    </a>
+  <a href="https://instagram.com/430am.dev" title="Instagram">
+    <img src="https://img.shields.io/badge/Instagram-%23E4405F.svg?style=for-the-badge&logo=Instagram&logoColor=white">
+  </a>
+</div>
+                                                                                                                      
+<br>
+
 - 🌱 I’m currently learning **Typescript, GraphQL, Nextjs**
 
 - 📫 How to reach me **hzidanomar@gmail.com**
@@ -11,21 +22,7 @@
 
 <br>
 
-<h3 align="left" style="font-size:1.5rem">Connect with me 🔗</h3>
-<div style="display:flex; gap:1rem;">
-    <a href="https://www.linkedin.com/in/zidan-omar-hamid-611b8221b/" margin-right:10px;">
-      <img src="https://img.shields.io/badge/linkedin-%230077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white">
-    </a>
-  <a href="https://instagram.com/430am.dev" title="Instagram">
-    <img src="https://img.shields.io/badge/Instagram-%23E4405F.svg?style=for-the-badge&logo=Instagram&logoColor=white">
-  </a>
-</div>
-
-<br>
-
-<h3 align="center" style="font-size:1.5rem">My Skills 🧑🏽‍🔬</h3>
-
-<br>
+<h3 align="center" style="font-size:1.5rem">Skills ✨</h3>
 
 <table border="0">
  <tr>
