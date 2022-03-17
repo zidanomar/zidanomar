@@ -18,7 +18,7 @@
 
 - 📫 How to reach me **hzidanomar@gmail.com**
 
-- 📄 Know about my experiences [resume](https://docs.google.com/document/d/1i5ewkxbZhEQgE_nZuxYSVYZrkAOU259p-d2yFYfabrQ/edit?usp=sharing)
+- 📄 Know about my experiences [resume](https://drive.google.com/file/d/1A_98ZICdoGCB0r2z8z7K1GjK8gqpsnIP/view)
 
 <br>
 
