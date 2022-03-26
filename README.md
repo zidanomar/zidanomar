@@ -10,6 +10,9 @@
   <a href="https://instagram.com/430am.dev" title="Instagram">
     <img src="https://img.shields.io/badge/Instagram-%23E4405F.svg?style=for-the-badge&logo=Instagram&logoColor=white">
   </a>
+   <a href="https://430am.dev" title="Instagram">
+    <img src="https://img.shields.io/badge/website-000000?style=for-the-badge&logo=About.me&logoColor=white">
+  </a>                                                                                                                
 </div>
                                                                                                                       
 <br>
