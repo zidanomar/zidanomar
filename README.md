@@ -21,7 +21,7 @@
 
 - 📫 How to reach me **hzidanomar@gmail.com**
 
--🦖 Let's work together [upwork](https://www.upwork.com/freelancers/~012cb1686926833c9e)
+- 🦖 Let's work together [upwork](https://www.upwork.com/freelancers/~012cb1686926833c9e)
 
 - 📄 Know about my experiences [resume](https://drive.google.com/file/d/1A_98ZICdoGCB0r2z8z7K1GjK8gqpsnIP/view)
 
