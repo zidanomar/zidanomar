@@ -21,7 +21,7 @@
 
 - 📫 How to reach me **zidanomar@430am.dev**
 
-- 🌐 About Me [webist](https://430am.dev)
+- 🌐 About [430amdev](https://430am.dev)
 
 <h3 align="center" style="font-size:1.5rem">Github stat 🔥</h3>
 
