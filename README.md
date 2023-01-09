@@ -17,7 +17,7 @@
                                                                                                                       
 <br>
 
-- 🌱 I’m currently learning **Microservices, GraphQL, DevOps**
+- 🌱 I’m currently learning **Microservices, GraphQL, Go, and Cloud Services (AWS)**
 
 - 📫 How to reach me **zidanomar@430am.dev**
 
