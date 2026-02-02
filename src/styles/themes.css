@@ -23,6 +23,19 @@
     --tab-active: #0a0e14;
     --status-bar-bg: #0d1017;
     --accent-color: #ffb454;
+
+    /* Shiki Theme Variables */
+    --astro-code-color-text: var(--text-primary);
+    --astro-code-color-background: var(--bg-primary); 
+    --astro-code-token-constant: var(--constant-color);
+    --astro-code-token-string: var(--string-color);
+    --astro-code-token-comment: var(--comment-color);
+    --astro-code-token-keyword: var(--keyword-color);
+    --astro-code-token-parameter: var(--text-accent);
+    --astro-code-token-function: var(--function-color);
+    --astro-code-token-string-expression: var(--string-color);
+    --astro-code-token-punctuation: var(--text-secondary);
+    --astro-code-token-link: var(--text-accent);
 }
 
 /* Ayu Mirage Theme */
@@ -46,6 +59,19 @@
     --tab-active: #1f2430;
     --status-bar-bg: #191e2a;
     --accent-color: #ffd580;
+
+    /* Shiki Theme Variables */
+    --astro-code-color-text: var(--text-primary);
+    --astro-code-color-background: var(--bg-primary); 
+    --astro-code-token-constant: var(--constant-color);
+    --astro-code-token-string: var(--string-color);
+    --astro-code-token-comment: var(--comment-color);
+    --astro-code-token-keyword: var(--keyword-color);
+    --astro-code-token-parameter: var(--text-accent);
+    --astro-code-token-function: var(--function-color);
+    --astro-code-token-string-expression: var(--string-color);
+    --astro-code-token-punctuation: var(--text-secondary);
+    --astro-code-token-link: var(--text-accent);
 }
 
 /* Ayu Light Theme */
@@ -69,6 +95,19 @@
     --tab-active: #fafafa;
     --status-bar-bg: #f3f4f5;
     --accent-color: #ff9940;
+
+    /* Shiki Theme Variables */
+    --astro-code-color-text: var(--text-primary);
+    --astro-code-color-background: var(--bg-primary); 
+    --astro-code-token-constant: var(--constant-color);
+    --astro-code-token-string: var(--string-color);
+    --astro-code-token-comment: var(--comment-color);
+    --astro-code-token-keyword: var(--keyword-color);
+    --astro-code-token-parameter: var(--text-accent);
+    --astro-code-token-function: var(--function-color);
+    --astro-code-token-string-expression: var(--string-color);
+    --astro-code-token-punctuation: var(--text-secondary);
+    --astro-code-token-link: var(--text-accent);
 }
 
 /* Monokai Theme */
@@ -92,6 +131,19 @@
     --tab-active: #272822;
     --status-bar-bg: #1e1f1c;
     --accent-color: #f92672;
+
+    /* Shiki Theme Variables */
+    --astro-code-color-text: var(--text-primary);
+    --astro-code-color-background: var(--bg-primary); 
+    --astro-code-token-constant: var(--constant-color);
+    --astro-code-token-string: var(--string-color);
+    --astro-code-token-comment: var(--comment-color);
+    --astro-code-token-keyword: var(--keyword-color);
+    --astro-code-token-parameter: var(--text-accent);
+    --astro-code-token-function: var(--function-color);
+    --astro-code-token-string-expression: var(--string-color);
+    --astro-code-token-punctuation: var(--text-secondary);
+    --astro-code-token-link: var(--text-accent);
 }
 
 /* Dracula Theme */
@@ -115,27 +167,269 @@
     --tab-active: #282a36;
     --status-bar-bg: #21222c;
     --accent-color: #ff79c6;
+
+    /* Shiki Theme Variables */
+    --astro-code-color-text: var(--text-primary);
+    --astro-code-color-background: var(--bg-primary); 
+    --astro-code-token-constant: var(--constant-color);
+    --astro-code-token-string: var(--string-color);
+    --astro-code-token-comment: var(--comment-color);
+    --astro-code-token-keyword: var(--keyword-color);
+    --astro-code-token-parameter: var(--text-accent);
+    --astro-code-token-function: var(--function-color);
+    --astro-code-token-string-expression: var(--string-color);
+    --astro-code-token-punctuation: var(--text-secondary);
+    --astro-code-token-link: var(--text-accent);
+}
+
+/* Synthwave '84 Theme */
+[data-theme="synthwave-84"] {
+    --bg-primary: #2b213a;
+    --bg-secondary: #241b2f;
+    --bg-tertiary: #34294f;
+    --bg-hover: #3d3356;
+    --border-color: #495495;
+    --text-primary: #ffffff;
+    --text-secondary: #b6b1b1;
+    --text-accent: #ff7edb;
+    --keyword-color: #fede5d;
+    --type-color: #ff7edb;
+    --string-color: #ff8b39;
+    --comment-color: #848bbd;
+    --function-color: #36f9f6;
+    --number-color: #f97e72;
+    --constant-color: #f97e72;
+    --package-color: #36f9f6;
+    --tab-active: #2b213a;
+    --status-bar-bg: #241b2f;
+    --accent-color: #ff7edb;
+
+    /* Shiki Theme Variables */
+    --astro-code-color-text: var(--text-primary);
+    --astro-code-color-background: var(--bg-primary); 
+    --astro-code-token-constant: var(--constant-color);
+    --astro-code-token-string: var(--string-color);
+    --astro-code-token-comment: var(--comment-color);
+    --astro-code-token-keyword: var(--keyword-color);
+    --astro-code-token-parameter: var(--text-accent);
+    --astro-code-token-function: var(--function-color);
+    --astro-code-token-string-expression: var(--string-color);
+    --astro-code-token-punctuation: var(--text-secondary);
+    --astro-code-token-link: var(--text-accent);
+}
+
+/* Nord Theme */
+[data-theme="nord"] {
+    --bg-primary: #2e3440;
+    --bg-secondary: #3b4252;
+    --bg-tertiary: #434c5e;
+    --bg-hover: #4c566a;
+    --border-color: #4c566a;
+    --text-primary: #d8dee9;
+    --text-secondary: #e5e9f0;
+    --text-accent: #88c0d0;
+    --keyword-color: #81a1c1;
+    --type-color: #8fbcbb;
+    --string-color: #a3be8c;
+    --comment-color: #616e88;
+    --function-color: #88c0d0;
+    --number-color: #b48ead;
+    --constant-color: #b48ead;
+    --package-color: #8fbcbb;
+    --tab-active: #2e3440;
+    --status-bar-bg: #3b4252;
+    --accent-color: #88c0d0;
+
+    /* Shiki Theme Variables */
+    --astro-code-color-text: var(--text-primary);
+    --astro-code-color-background: var(--bg-primary); 
+    --astro-code-token-constant: var(--constant-color);
+    --astro-code-token-string: var(--string-color);
+    --astro-code-token-comment: var(--comment-color);
+    --astro-code-token-keyword: var(--keyword-color);
+    --astro-code-token-parameter: var(--text-accent);
+    --astro-code-token-function: var(--function-color);
+    --astro-code-token-string-expression: var(--string-color);
+    --astro-code-token-punctuation: var(--text-secondary);
+    --astro-code-token-link: var(--text-accent);
+}
+
+/* Solarized Dark Theme */
+[data-theme="solarized-dark"] {
+    --bg-primary: #002b36;
+    --bg-secondary: #073642;
+    --bg-tertiary: #586e75;
+    --bg-hover: #657b83;
+    --border-color: #586e75;
+    --text-primary: #839496;
+    --text-secondary: #93a1a1;
+    --text-accent: #268bd2;
+    --keyword-color: #859900;
+    --type-color: #b58900;
+    --string-color: #2aa198;
+    --comment-color: #586e75;
+    --function-color: #268bd2;
+    --number-color: #d33682;
+    --constant-color: #cb4b16;
+    --package-color: #b58900;
+    --tab-active: #002b36;
+    --status-bar-bg: #073642;
+    --accent-color: #268bd2;
+
+    /* Shiki Theme Variables */
+    --astro-code-color-text: var(--text-primary);
+    --astro-code-color-background: var(--bg-primary); 
+    --astro-code-token-constant: var(--constant-color);
+    --astro-code-token-string: var(--string-color);
+    --astro-code-token-comment: var(--comment-color);
+    --astro-code-token-keyword: var(--keyword-color);
+    --astro-code-token-parameter: var(--text-accent);
+    --astro-code-token-function: var(--function-color);
+    --astro-code-token-string-expression: var(--string-color);
+    --astro-code-token-punctuation: var(--text-secondary);
+    --astro-code-token-link: var(--text-accent);
+}
+
+/* GitHub Dark Theme */
+[data-theme="github-dark"] {
+    --bg-primary: #0d1117;
+    --bg-secondary: #161b22;
+    --bg-tertiary: #21262d;
+    --bg-hover: #30363d;
+    --border-color: #30363d;
+    --text-primary: #c9d1d9;
+    --text-secondary: #8b949e;
+    --text-accent: #58a6ff;
+    --keyword-color: #ff7b72;
+    --type-color: #79c0ff;
+    --string-color: #a5d6ff;
+    --comment-color: #8b949e;
+    --function-color: #d2a8ff;
+    --number-color: #79c0ff;
+    --constant-color: #79c0ff;
+    --package-color: #79c0ff;
+    --tab-active: #0d1117;
+    --status-bar-bg: #161b22;
+    --accent-color: #58a6ff;
+
+    /* Shiki Theme Variables */
+    --astro-code-color-text: var(--text-primary);
+    --astro-code-color-background: var(--bg-primary); 
+    --astro-code-token-constant: var(--constant-color);
+    --astro-code-token-string: var(--string-color);
+    --astro-code-token-comment: var(--comment-color);
+    --astro-code-token-keyword: var(--keyword-color);
+    --astro-code-token-parameter: var(--text-accent);
+    --astro-code-token-function: var(--function-color);
+    --astro-code-token-string-expression: var(--string-color);
+    --astro-code-token-punctuation: var(--text-secondary);
+    --astro-code-token-link: var(--text-accent);
+}
+
+/* Night Owl Theme */
+[data-theme="night-owl"] {
+    --bg-primary: #011627;
+    --bg-secondary: #0b2942;
+    --bg-tertiary: #234d70;
+    --bg-hover: #1d3b53;
+    --border-color: #5f7e97;
+    --text-primary: #d6deeb;
+    --text-secondary: #7fdbca;
+    --text-accent: #82aaff;
+    --keyword-color: #c792ea;
+    --type-color: #addb67;
+    --string-color: #ecc48d;
+    --comment-color: #637777;
+    --function-color: #82aaff;
+    --number-color: #f78c6c;
+    --constant-color: #82aaff;
+    --package-color: #7fdbca;
+    --tab-active: #011627;
+    --status-bar-bg: #0b2942;
+    --accent-color: #82aaff;
+
+    /* Shiki Theme Variables */
+    --astro-code-color-text: var(--text-primary);
+    --astro-code-color-background: var(--bg-primary); 
+    --astro-code-token-constant: var(--constant-color);
+    --astro-code-token-string: var(--string-color);
+    --astro-code-token-comment: var(--comment-color);
+    --astro-code-token-keyword: var(--keyword-color);
+    --astro-code-token-parameter: var(--text-accent);
+    --astro-code-token-function: var(--function-color);
+    --astro-code-token-string-expression: var(--string-color);
+    --astro-code-token-punctuation: var(--text-secondary);
+    --astro-code-token-link: var(--text-accent);
+}
+
+/* One Dark Pro Theme */
+[data-theme="one-dark-pro"] {
+    --bg-primary: #282c34;
+    --bg-secondary: #21252b;
+    --bg-tertiary: #3a404d;
+    --bg-hover: #3e4451;
+    --border-color: #3e4451;
+    --text-primary: #abb2bf;
+    --text-secondary: #5c6370;
+    --text-accent: #61afef;
+    --keyword-color: #c678dd;
+    --type-color: #e5c07b;
+    --string-color: #98c379;
+    --comment-color: #5c6370;
+    --function-color: #61afef;
+    --number-color: #d19a66;
+    --constant-color: #d19a66;
+    --package-color: #e5c07b;
+    --tab-active: #282c34;
+    --status-bar-bg: #21252b;
+    --accent-color: #61afef;
+
+    /* Shiki Theme Variables */
+    --astro-code-color-text: var(--text-primary);
+    --astro-code-color-background: var(--bg-primary); 
+    --astro-code-token-constant: var(--constant-color);
+    --astro-code-token-string: var(--string-color);
+    --astro-code-token-comment: var(--comment-color);
+    --astro-code-token-keyword: var(--keyword-color);
+    --astro-code-token-parameter: var(--text-accent);
+    --astro-code-token-function: var(--function-color);
+    --astro-code-token-string-expression: var(--string-color);
+    --astro-code-token-punctuation: var(--text-secondary);
+    --astro-code-token-link: var(--text-accent);
 }
 
 /* Set default theme for body without data-theme attribute */
 body:not([data-theme]) {
-    --bg-primary: #0a0e14;
-    --bg-secondary: #0d1017;
-    --bg-tertiary: #151a1e;
-    --bg-hover: #1f2430;
-    --border-color: #1f2430;
-    --text-primary: #b3b1ad;
-    --text-secondary: #5c6773;
-    --text-accent: #ffb454;
-    --keyword-color: #ff8f40;
-    --type-color: #59c2ff;
-    --string-color: #aad94c;
-    --comment-color: #5c6773;
-    --function-color: #ffb454;
-    --number-color: #d2a6ff;
-    --constant-color: #ff8f40;
-    --package-color: #39bae6;
-    --tab-active: #0a0e14;
-    --status-bar-bg: #0d1017;
-    --accent-color: #ffb454;
+    --bg-primary: #2b213a;
+    --bg-secondary: #241b2f;
+    --bg-tertiary: #34294f;
+    --bg-hover: #3d3356;
+    --border-color: #495495;
+    --text-primary: #ffffff;
+    --text-secondary: #b6b1b1;
+    --text-accent: #ff7edb;
+    --keyword-color: #fede5d;
+    --type-color: #ff7edb;
+    --string-color: #ff8b39;
+    --comment-color: #848bbd;
+    --function-color: #36f9f6;
+    --number-color: #f97e72;
+    --constant-color: #f97e72;
+    --package-color: #36f9f6;
+    --tab-active: #2b213a;
+    --status-bar-bg: #241b2f;
+    --accent-color: #ff7edb;
+
+    /* Shiki Theme Variables */
+    --astro-code-color-text: var(--text-primary);
+    --astro-code-color-background: var(--bg-primary); 
+    --astro-code-token-constant: var(--constant-color);
+    --astro-code-token-string: var(--string-color);
+    --astro-code-token-comment: var(--comment-color);
+    --astro-code-token-keyword: var(--keyword-color);
+    --astro-code-token-parameter: var(--text-accent);
+    --astro-code-token-function: var(--function-color);
+    --astro-code-token-string-expression: var(--string-color);
+    --astro-code-token-punctuation: var(--text-secondary);
+    --astro-code-token-link: var(--text-accent);
 }

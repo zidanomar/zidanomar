@@ -3,7 +3,7 @@ import Layout from '@layouts/Layout.astro';
 import Header from '@components/Header.astro';
 import Sidebar from '@components/Sidebar.astro';
 import Editor from '@components/Editor.astro';
-import ResumeContent from '@components/ResumeContent.astro';
+import { resumeCode } from '../data/resume';
 ---
 
 <Layout title="Zidan Omar Hamid - Software Engineer">
@@ -11,9 +11,7 @@ import ResumeContent from '@components/ResumeContent.astro';
     
     <div class="container">
         <Sidebar />
-        <Editor fileName="zidan_resume.go" language="Go">
-            <ResumeContent />
-        </Editor>
+        <Editor fileName="zidan_resume.go" language="Go" code={resumeCode} />
     </div>
 </Layout>
 

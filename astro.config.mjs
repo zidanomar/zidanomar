@@ -7,6 +7,11 @@ export default defineConfig({
   build: {
     inlineStylesheets: 'auto',
   },
+  markdown: {
+    shikiConfig: {
+      theme: 'css-variables',
+    },
+  },
   vite: {
     build: {
       cssMinify: true,

@@ -1,7 +1,21 @@
-type Theme = 'ayu-dark' | 'ayu-mirage' | 'ayu-light' | 'monokai' | 'dracula';
+export type Theme = 'ayu-dark' | 'ayu-mirage' | 'ayu-light' | 'monokai' | 'dracula' | 'synthwave-84' | 'nord' | 'solarized-dark' | 'github-dark' | 'night-owl' | 'one-dark-pro';
 
-const THEMES: Theme[] = ['ayu-dark', 'ayu-mirage', 'ayu-light', 'monokai', 'dracula'];
-const DEFAULT_THEME: Theme = 'ayu-dark';
+export const THEMES: Theme[] = ['ayu-dark', 'ayu-mirage', 'ayu-light', 'monokai', 'dracula', 'synthwave-84', 'nord', 'solarized-dark', 'github-dark', 'night-owl', 'one-dark-pro'];
+
+export const THEME_LABELS: Record<Theme, string> = {
+    'ayu-dark': 'Ayu Dark',
+    'ayu-mirage': 'Ayu Mirage',
+    'ayu-light': 'Ayu Light',
+    'monokai': 'Monokai',
+    'dracula': 'Dracula',
+    'synthwave-84': "Synthwave '84",
+    'nord': 'Nord',
+    'solarized-dark': 'Solarized Dark',
+    'github-dark': 'GitHub Dark',
+    'night-owl': 'Night Owl',
+    'one-dark-pro': 'One Dark Pro'
+};
+const DEFAULT_THEME: Theme = 'synthwave-84';
 const STORAGE_KEY = 'theme';
 
 export class ThemeManager {
@@ -85,8 +99,10 @@ export class ThemeManager {
     }
 }
 
-if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', () => new ThemeManager());
-} else {
-    new ThemeManager();
+if (typeof document !== 'undefined') {
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', () => new ThemeManager());
+    } else {
+        new ThemeManager();
+    }
 }

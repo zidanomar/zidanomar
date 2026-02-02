@@ -2,6 +2,7 @@
 const currentPath = Astro.url.pathname;
 const isHome = currentPath === '/' || currentPath === '';
 const isLog = currentPath.startsWith('/log');
+import { THEMES, THEME_LABELS } from '@scripts/theme-manager';
 ---
 
 <aside class="sidebar">
@@ -72,11 +73,9 @@ const isLog = currentPath.startsWith('/log');
         <div class="theme-selector">
             <div class="theme-label">THEME</div>
             <select id="themeSelect" class="theme-dropdown">
-                <option value="ayu-dark">Ayu Dark</option>
-                <option value="ayu-mirage">Ayu Mirage</option>
-                <option value="ayu-light">Ayu Light</option>
-                <option value="monokai">Monokai</option>
-                <option value="dracula">Dracula</option>
+                {THEMES.map((theme) => (
+                    <option value={theme}>{THEME_LABELS[theme]}</option>
+                ))}
             </select>
         </div>
     </div>

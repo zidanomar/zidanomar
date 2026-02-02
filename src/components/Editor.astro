@@ -1,5 +1,77 @@
 ---
-const { fileName = 'zidan_resume.go', language = 'Go', viewMode = 'code' } = Astro.props;
+import { Code } from 'astro:components';
+
+const { fileName = 'zidan_resume.go', language = 'Go', viewMode = 'code', code } = Astro.props;
+
+const customTheme = {
+  name: 'dynamic-theme',
+  type: 'dark' as const,
+  settings: [
+    {
+      settings: {
+        background: 'transparent',
+        foreground: 'var(--text-primary)',
+      },
+    },
+    {
+      scope: ['keyword', 'storage.type', 'storage.modifier'],
+      settings: {
+        foreground: 'var(--keyword-color)',
+        fontStyle: 'bold',
+      },
+    },
+    {
+      scope: ['entity.name.type', 'support.type', 'entity.name.class'],
+      settings: {
+        foreground: 'var(--type-color)',
+      },
+    },
+    {
+      scope: ['string'],
+      settings: {
+        foreground: 'var(--string-color)',
+      },
+    },
+    {
+      scope: ['comment'],
+      settings: {
+        foreground: 'var(--comment-color)',
+        fontStyle: 'italic',
+      },
+    },
+    {
+      scope: ['entity.name.function', 'support.function'],
+      settings: {
+        foreground: 'var(--function-color)',
+        fontStyle: 'bold',
+      },
+    },
+    {
+      scope: ['constant.numeric', 'constant.language', 'constant.character', 'constant.other'],
+      settings: {
+        foreground: 'var(--number-color)',
+      },
+    },
+    {
+      scope: ['variable', 'variable.other', 'variable.language'],
+      settings: {
+        foreground: 'var(--text-primary)',
+      },
+    },
+    {
+      scope: ['punctuation', 'meta.brace'],
+      settings: {
+        foreground: 'var(--text-secondary)',
+      },
+    },
+    {
+      scope: ['entity.name.package', 'support.other.namespace'],
+      settings: {
+        foreground: 'var(--package-color)',
+      },
+    }
+  ],
+};
 ---
 
 <main class="editor">
@@ -12,9 +84,15 @@ const { fileName = 'zidan_resume.go', language = 'Go', viewMode = 'code' } = Ast
     </div>
 
     <div class="code-content">
-        <div class:list={["code", { "markdown-preview": viewMode === 'markdown' }]} id="codeContent">
-            <slot />
-        </div>
+        {code ? (
+            <div class="code scrollable">
+                <Code code={code} lang={language.toLowerCase()} theme={customTheme} />
+            </div>
+        ) : (
+            <div class:list={["code", { "markdown-preview": viewMode === 'markdown' }]} id="codeContent">
+                <slot />
+            </div>
+        )}
     </div>
 
     <div class="status-bar">
@@ -164,42 +242,6 @@ const { fileName = 'zidan_resume.go', language = 'Go', viewMode = 'code' } = Ast
         margin-bottom: 0.3em;
     }
 
-    /* Syntax Highlighting */
-    .code :global(.keyword) {
-        color: var(--keyword-color);
-        font-weight: 600;
-    }
-
-    .code :global(.type) {
-        color: var(--type-color);
-        font-weight: 500;
-    }
-
-    .code :global(.string) {
-        color: var(--string-color);
-    }
-
-    .code :global(.comment) {
-        color: var(--comment-color);
-        font-style: italic;
-    }
-
-    .code :global(.function) {
-        color: var(--function-color);
-        font-weight: 600;
-    }
-
-    .code :global(.number) {
-        color: var(--number-color);
-    }
-
-    .code :global(.constant) {
-        color: var(--constant-color);
-    }
-
-    .code :global(.package) {
-        color: var(--package-color);
-    }
 
     .status-bar {
         height: 22px;
