@@ -1,0 +1,28 @@
+---
+import Layout from '@layouts/Layout.astro';
+import Header from '@components/Header.astro';
+import Sidebar from '@components/Sidebar.astro';
+import Editor from '@components/Editor.astro';
+
+const { frontmatter } = Astro.props;
+---
+
+<Layout title={frontmatter.title + " - Log"}>
+    <Header />
+    <div class="container">
+        <Sidebar />
+        <Editor fileName={frontmatter.title ? `${frontmatter.title.toLowerCase().replace(/\s+/g, '-')}.md` : 'post.md'} language="Markdown" viewMode="markdown">
+            <slot />
+        </Editor>
+    </div>
+</Layout>
+
+<style>
+    .container {
+        display: flex;
+        height: 100vh;
+        overflow: hidden;
+        background-color: var(--bg-primary);
+        color: var(--text-primary);
+    }
+</style>

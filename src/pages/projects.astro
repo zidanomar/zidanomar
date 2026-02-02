@@ -1,0 +1,52 @@
+---
+import Layout from '@layouts/Layout.astro';
+import Header from '@components/Header.astro';
+import Sidebar from '@components/Sidebar.astro';
+---
+
+<Layout title="Projects - Zidan Omar Hamid">
+    <Header />
+    
+    <div class="container">
+        <Sidebar />
+        <main class="content">
+            <div class="page-content">
+                <h1>Projects</h1>
+                <p>My projects will be listed here.</p>
+            </div>
+        </main>
+    </div>
+</Layout>
+
+<style>
+    .container {
+        display: flex;
+        height: calc(100vh - 35px);
+    }
+
+    .content {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+        background-color: var(--bg-primary);
+    }
+
+    .page-content {
+        flex: 1;
+        padding: 40px;
+        overflow-y: auto;
+        color: var(--text-primary);
+    }
+
+    h1 {
+        font-size: 32px;
+        margin-bottom: 20px;
+        color: var(--text-accent);
+    }
+
+    p {
+        font-size: 16px;
+        line-height: 1.6;
+    }
+</style>

@@ -1,0 +1,44 @@
+---
+import Layout from '@layouts/Layout.astro';
+import Header from '@components/Header.astro';
+import Sidebar from '@components/Sidebar.astro';
+import Editor from '@components/Editor.astro';
+---
+
+<Layout title="404: Not Found - Log">
+    <Header />
+    <div class="container">
+        <Sidebar />
+        <Editor fileName="404.go" language="Go">
+            <div class="code-section" set:html={`
+<span class="keyword">package</span> <span class="package">main</span>
+
+<span class="keyword">import</span> (
+    <span class="string">"fmt"</span>
+    <span class="string">"net/http"</span>
+)
+
+<span class="function">func</span> <span class="function">main</span>() {
+    <span class="comment">// 404 Error: Page Not Found</span>
+    <span class="comment">// The requested resource could not be found on this server.</span>
+    
+    <span class="type">panic</span>(<span class="string">"404: Page Not Found"</span>)
+    
+    <span class="comment">// Try navigating back to safe harbor:</span>
+    <span class="comment">// - <a href="/" style="color: var(--text-accent); text-decoration: underline;">Home</a></span>
+    <span class="comment">// - <a href="/log" style="color: var(--text-accent); text-decoration: underline;">Log</a></span>
+}
+            `}></div>
+        </Editor>
+    </div>
+</Layout>
+
+<style>
+    .container {
+        display: flex;
+        height: 100vh;
+        overflow: hidden;
+        background-color: var(--bg-primary);
+        color: var(--text-primary);
+    }
+</style>

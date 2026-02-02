@@ -1,0 +1,92 @@
+---
+import Layout from '@layouts/Layout.astro';
+import Header from '@components/Header.astro';
+import Sidebar from '@components/Sidebar.astro';
+---
+
+<Layout title="Contact - Zidan Omar Hamid">
+    <Header />
+    
+    <div class="container">
+        <Sidebar />
+        <main class="content">
+            <div class="page-content">
+                <h1>Contact</h1>
+                <p>Get in touch with me.</p>
+                
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <strong>Email:</strong> <a href="mailto:zidanomar@430am.dev">zidanomar@430am.dev</a>
+                    </div>
+                    <div class="contact-item">
+                        <strong>Website:</strong> <a href="https://430am.dev" target="_blank" rel="noopener">430am.dev</a>
+                    </div>
+                    <div class="contact-item">
+                        <strong>GitHub:</strong> <a href="https://github.com/zidanomar" target="_blank" rel="noopener">github.com/zidanomar</a>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</Layout>
+
+<style>
+    .container {
+        display: flex;
+        height: calc(100vh - 35px);
+    }
+
+    .content {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+        background-color: var(--bg-primary);
+    }
+
+    .page-content {
+        flex: 1;
+        padding: 40px;
+        overflow-y: auto;
+        color: var(--text-primary);
+    }
+
+    h1 {
+        font-size: 32px;
+        margin-bottom: 20px;
+        color: var(--text-accent);
+    }
+
+    p {
+        font-size: 16px;
+        line-height: 1.6;
+        margin-bottom: 30px;
+    }
+
+    .contact-info {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .contact-item {
+        font-size: 16px;
+        line-height: 1.6;
+    }
+
+    .contact-item strong {
+        color: var(--text-accent);
+        margin-right: 10px;
+    }
+
+    .contact-item a {
+        color: var(--type-color);
+        text-decoration: none;
+        transition: color 0.2s ease;
+    }
+
+    .contact-item a:hover {
+        color: var(--text-accent);
+        text-decoration: underline;
+    }
+</style>

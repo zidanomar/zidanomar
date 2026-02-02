@@ -1,0 +1,270 @@
+---
+import { Code } from 'astro:components';
+
+const { fileName = 'zidan_resume.go', language = 'Go', viewMode = 'code', code } = Astro.props;
+
+const customTheme = {
+  name: 'dynamic-theme',
+  type: 'dark' as const,
+  settings: [
+    {
+      settings: {
+        background: 'transparent',
+        foreground: 'var(--text-primary)',
+      },
+    },
+    {
+      scope: ['keyword', 'storage.type', 'storage.modifier'],
+      settings: {
+        foreground: 'var(--keyword-color)',
+        fontStyle: 'bold',
+      },
+    },
+    {
+      scope: ['entity.name.type', 'support.type', 'entity.name.class'],
+      settings: {
+        foreground: 'var(--type-color)',
+      },
+    },
+    {
+      scope: ['string'],
+      settings: {
+        foreground: 'var(--string-color)',
+      },
+    },
+    {
+      scope: ['comment'],
+      settings: {
+        foreground: 'var(--comment-color)',
+        fontStyle: 'italic',
+      },
+    },
+    {
+      scope: ['entity.name.function', 'support.function'],
+      settings: {
+        foreground: 'var(--function-color)',
+        fontStyle: 'bold',
+      },
+    },
+    {
+      scope: ['constant.numeric', 'constant.language', 'constant.character', 'constant.other'],
+      settings: {
+        foreground: 'var(--number-color)',
+      },
+    },
+    {
+      scope: ['variable', 'variable.other', 'variable.language'],
+      settings: {
+        foreground: 'var(--text-primary)',
+      },
+    },
+    {
+      scope: ['punctuation', 'meta.brace'],
+      settings: {
+        foreground: 'var(--text-secondary)',
+      },
+    },
+    {
+      scope: ['entity.name.package', 'support.other.namespace'],
+      settings: {
+        foreground: 'var(--package-color)',
+      },
+    }
+  ],
+};
+---
+
+<main class="editor">
+    <div class="tab-bar">
+        <div class="tab active">
+            <span class="file-icon">📄</span>
+            <span>{fileName}</span>
+            <span class="close-tab">×</span>
+        </div>
+    </div>
+
+    <div class="code-content">
+        {code ? (
+            <div class="code scrollable">
+                <Code code={code} lang={language.toLowerCase()} theme={customTheme} />
+            </div>
+        ) : (
+            <div class:list={["code", { "markdown-preview": viewMode === 'markdown' }]} id="codeContent">
+                <slot />
+            </div>
+        )}
+    </div>
+
+    <div class="status-bar">
+        <div class="status-left">
+            <span class="status-item">
+                <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor">
+                    <path d="M8 1.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13zM0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8z"/>
+                    <path d="M7.002 11a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM7.1 4.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 4.995z"/>
+                </svg>
+                0
+            </span>
+            <span class="status-item">
+                <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor">
+                    <path d="M8.568 1.031A.5.5 0 0 1 9 1.5V15h-1V1.5a.5.5 0 0 1 .568-.469zM4.5 6h-1a.5.5 0 0 0 0 1h1a.5.5 0 0 0 0-1zm-2 4h-1a.5.5 0 0 0 0 1h1a.5.5 0 0 0 0-1z"/>
+                </svg>
+                0
+            </span>
+        </div>
+        <div class="status-right">
+            <span class="status-item">Ln 1, Col 1</span>
+            <span class="status-item">Spaces: 4</span>
+            <span class="status-item">UTF-8</span>
+            <span class="status-item">{language}</span>
+        </div>
+    </div>
+</main>
+
+<style>
+    .editor {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+    }
+
+    .tab-bar {
+        height: 35px;
+        background-color: var(--bg-secondary);
+        border-bottom: 1px solid var(--border-color);
+        display: flex;
+        align-items: flex-end;
+        padding: 0 10px;
+        transition: background-color 0.15s ease;
+    }
+
+    .tab {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 8px 15px;
+        background-color: var(--bg-tertiary);
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
+        cursor: pointer;
+        font-size: 13px;
+        transition: background-color 0.2s ease;
+    }
+
+    .tab.active {
+        background-color: var(--tab-active);
+        border-bottom: 2px solid var(--accent-color);
+    }
+
+    .file-icon {
+        font-size: 14px;
+    }
+
+    .close-tab {
+        margin-left: 5px;
+        opacity: 0;
+        transition: opacity 0.2s ease;
+    }
+
+    .tab:hover .close-tab {
+        opacity: 1;
+    }
+
+    .code-content {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+        background-color: var(--bg-primary);
+        transition: background-color 0.15s ease;
+    }
+
+    .code {
+        flex: 1;
+        padding: 0px 10px;
+        font-size: 14px;
+        line-height: 1.6;
+        white-space: pre;
+        overflow-x: auto;
+        overflow-y: auto;
+    }
+    
+    .code.markdown-preview {
+        white-space: normal;
+        font-family: var(--font-menu); /* Use a more readable font for reading */
+        color: var(--text-primary);
+    }
+    
+    .code.markdown-preview :global(h1),
+    .code.markdown-preview :global(h2),
+    .code.markdown-preview :global(h3) {
+        color: var(--text-accent);
+        margin-top: 1.5em;
+        margin-bottom: 0.5em;
+        font-weight: 600;
+    }
+    
+    .code.markdown-preview :global(h1) { font-size: 2em; border-bottom: 1px solid var(--border-color); padding-bottom: 0.3em; }
+    .code.markdown-preview :global(h2) { font-size: 1.5em; }
+    
+    .code.markdown-preview :global(p) {
+        margin-bottom: 1em;
+    }
+    
+    .code.markdown-preview :global(pre) {
+        background-color: var(--bg-secondary);
+        padding: 15px;
+        border-radius: 5px;
+        overflow-x: auto;
+        margin-bottom: 1em;
+        border: 1px solid var(--border-color);
+    }
+    
+    .code.markdown-preview :global(code) {
+        font-family: var(--font-mono);
+        background-color: rgba(255,255,255,0.1);
+        padding: 2px 4px;
+        border-radius: 3px;
+    }
+    
+    .code.markdown-preview :global(pre code) {
+        background-color: transparent;
+        padding: 0;
+    }
+
+    .code.markdown-preview :global(ul),
+    .code.markdown-preview :global(ol) {
+        margin-left: 30px;
+        margin-bottom: 1em;
+    }
+
+    .code.markdown-preview :global(li) {
+        margin-bottom: 0.3em;
+    }
+
+
+    .status-bar {
+        height: 22px;
+        background-color: var(--status-bar-bg);
+        border-top: 1px solid var(--border-color);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 15px;
+        font-size: 12px;
+        color: var(--text-secondary);
+        transition: background-color 0.15s ease;
+    }
+
+    .status-left,
+    .status-right {
+        display: flex;
+        gap: 15px;
+    }
+
+    .status-item {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+    }
+</style>
