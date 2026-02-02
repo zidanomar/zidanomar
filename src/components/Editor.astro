@@ -1,143 +1,20 @@
 ---
+const { fileName = 'zidan_resume.go', language = 'Go', viewMode = 'code' } = Astro.props;
 ---
 
 <main class="editor">
     <div class="tab-bar">
         <div class="tab active">
             <span class="file-icon">📄</span>
-            <span>zidan_resume.go</span>
+            <span>{fileName}</span>
             <span class="close-tab">×</span>
         </div>
     </div>
 
     <div class="code-content">
-        <div class="line-numbers" id="lineNumbers"></div>
-        <div class="code" id="codeContent" set:html={`<span class="keyword">package</span> <span class="package">main</span>
-
-<span class="keyword">import</span> (
-    <span class="string">"fmt"</span>
-    <span class="string">"time"</span>
-)
-
-<span class="comment">// Profile represents the software engineer's professional identity</span>
-<span class="keyword">type</span> <span class="type">Profile</span> <span class="keyword">struct</span> {
-    Name     <span class="type">string</span>
-    Title    <span class="type">string</span>
-    Website  <span class="type">string</span>
-    GitHub   <span class="type">string</span>
-    Email    <span class="type">string</span>
-    Summary  <span class="type">string</span>
-}
-
-<span class="comment">// Experience represents a professional work experience</span>
-<span class="keyword">type</span> <span class="type">Experience</span> <span class="keyword">struct</span> {
-    Company      <span class="type">string</span>
-    Position     <span class="type">string</span>
-    Location     <span class="type">string</span>
-    StartDate    <span class="type">time.Time</span>
-    EndDate      *<span class="type">time.Time</span> <span class="comment">// nil for current position</span>
-    Achievements []<span class="type">string</span>
-}
-
-<span class="comment">// Education represents educational background</span>
-<span class="keyword">type</span> <span class="type">Education</span> <span class="keyword">struct</span> {
-    Institution <span class="type">string</span>
-    Degree      <span class="type">string</span>
-}
-
-<span class="comment">// Skills represents technical expertise</span>
-<span class="keyword">type</span> <span class="type">Skills</span> <span class="keyword">struct</span> {
-    Languages    []<span class="type">string</span>
-    Technologies []<span class="type">string</span>
-}
-
-<span class="keyword">func</span> <span class="function">main</span>() {
-    <span class="comment">// Initialize profile</span>
-    profile := <span class="type">Profile</span>{
-        Name:    <span class="string">"Zidan Omar Hamid"</span>,
-        Title:   <span class="string">"Software Engineer"</span>,
-        Website: <span class="string">"https://430am.dev"</span>,
-        GitHub:  <span class="string">"github.com/zidanomar"</span>,
-        Email:   <span class="string">"zidanomar@430am.dev"</span>,
-        Summary: <span class="string">"Software Engineer with 3+ years of experience building backend and frontend systems for data-driven applications."</span>,
-    }
-
-    <span class="comment">// Professional experiences</span>
-    experiences := []<span class="type">Experience</span>{
-        {
-            Company:  <span class="string">"VIVAVIS Water"</span>,
-            Position: <span class="string">"Software Engineer"</span>,
-            Location: <span class="string">"Istanbul, Türkiye"</span>,
-            StartDate: time.Date(<span class="number">2022</span>, time.May, <span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, time.UTC),
-            EndDate:   <span class="constant">nil</span>, <span class="comment">// Current position</span>
-            Achievements: []<span class="type">string</span>{
-                <span class="string">"Designed a scalable IoT data ingestion services with Go and NodeJS, resulting in high-throughput, reliable data processing from thousands of devices."</span>,
-                <span class="string">"Developed parsers for ModBus and M-Bus IoT protocols, enabling accurate and unified ingestion of diverse device telemetry."</span>,
-                <span class="string">"Integrated TimescaleDB for time-series data aggregation, leading to substantial improvements in query speed and analytics processing."</span>,
-                <span class="string">"Led the migration from VM-based deployments to Kubernetes on Google Cloud, resulting in higher scalability, improved uptime, and simplified DevOps workflows."</span>,
-                <span class="string">"Implemented CI/CD pipelines with Jenkins, leading to automated deployments, faster release cycles, and minimized manual errors."</span>,
-            },
-        },
-        {
-            Company:  <span class="string">"Turkish Aerospace Industries, Inc."</span>,
-            Position: <span class="string">"Software Developer Intern"</span>,
-            Location: <span class="string">"Istanbul, Türkiye"</span>,
-            StartDate: time.Date(<span class="number">2021</span>, time.November, <span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, time.UTC),
-            EndDate:   &time.Time{}, <span class="comment">// Jan 2022</span>
-            Achievements: []<span class="type">string</span>{
-                <span class="string">"Implemented a secure role-based access control (RBAC) system for users and administrators, protecting critical operational workflows."</span>,
-                <span class="string">"Designed and maintained database schema and migration strategy, ensuring data integrity, supporting feature growth, and enabling seamless iteration."</span>,
-            },
-        },
-        {
-            Company:  <span class="string">"Bandung Institute of Technology"</span>,
-            Position: <span class="string">"Network Engineer Intern"</span>,
-            Location: <span class="string">"Bandung, Indonesia"</span>,
-            StartDate: time.Date(<span class="number">2017</span>, time.January, <span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, time.UTC),
-            EndDate:   &time.Time{}, <span class="comment">// Mar 2017</span>
-            Achievements: []<span class="type">string</span>{
-                <span class="string">"Configured and maintained local area network including routing and firewall rules."</span>,
-                <span class="string">"Setup and manage Wi-Fi user access and authentication with MikroTik."</span>,
-                <span class="string">"Assisted students and staff with computer, network, and software related issues."</span>,
-            },
-        },
-    }
-
-    <span class="comment">// Education background</span>
-    education := <span class="type">Education</span>{
-        Institution: <span class="string">"Sakarya University"</span>,
-        Degree:      <span class="string">"Computer Engineering"</span>,
-    }
-
-    <span class="comment">// Technical skills</span>
-    skills := <span class="type">Skills</span>{
-        Languages: []<span class="type">string</span>{
-            <span class="string">"Go"</span>, <span class="string">"Javascript/Typescript"</span>, <span class="string">"NestJS"</span>, 
-            <span class="string">"Go Fiber"</span>, <span class="string">"React"</span>, <span class="string">"Vue"</span>, 
-            <span class="string">"Nuxt"</span>, <span class="string">"Leaflet"</span>, <span class="string">"Apache Echarts"</span>,
-        },
-        Technologies: []<span class="type">string</span>{
-            <span class="string">"Docker"</span>, <span class="string">"Kubernetes"</span>, <span class="string">"GCP"</span>, 
-            <span class="string">"AWS"</span>, <span class="string">"Jenkins"</span>, <span class="string">"Postgres"</span>, 
-            <span class="string">"TimescaleDB"</span>, <span class="string">"MQTT"</span>, <span class="string">"RabbitMQ"</span>, 
-            <span class="string">"Kafka"</span>, <span class="string">"Redis"</span>, <span class="string">"gRPC"</span>,
-        },
-    }
-
-    <span class="comment">// Display resume</span>
-    fmt.Println(<span class="string">"=== RESUME ==="</span>)
-    fmt.Printf(<span class="string">"Name: %s\\n"</span>, profile.Name)
-    fmt.Printf(<span class="string">"Title: %s\\n"</span>, profile.Title)
-    fmt.Printf(<span class="string">"Contact: %s | %s | %s\\n"</span>, profile.Website, profile.GitHub, profile.Email)
-    
-    <span class="keyword">for</span> _, exp := <span class="keyword">range</span> experiences {
-        fmt.Printf(<span class="string">"\\n%s - %s (%s)\\n"</span>, exp.Company, exp.Position, exp.Location)
-        <span class="keyword">for</span> _, achievement := <span class="keyword">range</span> exp.Achievements {
-            fmt.Printf(<span class="string">"  • %s\\n"</span>, achievement)
-        }
-    }
-}
-`}></div>
+        <div class:list={["code", { "markdown-preview": viewMode === 'markdown' }]} id="codeContent">
+            <slot />
+        </div>
     </div>
 
     <div class="status-bar">
@@ -160,7 +37,7 @@
             <span class="status-item">Ln 1, Col 1</span>
             <span class="status-item">Spaces: 4</span>
             <span class="status-item">UTF-8</span>
-            <span class="status-item">Go</span>
+            <span class="status-item">{language}</span>
         </div>
     </div>
 </main>
@@ -217,40 +94,74 @@
 
     .code-content {
         flex: 1;
-        display: grid;
-        grid-template-columns: 60px 1fr;
+        display: flex;
+        flex-direction: column;
         overflow: hidden;
         background-color: var(--bg-primary);
         transition: background-color 0.15s ease;
     }
 
-    .line-numbers {
-        padding: 20px 10px;
-        background-color: var(--bg-primary);
-        color: var(--text-secondary);
-        text-align: right;
-        user-select: none;
-        font-size: 14px;
-        line-height: 1.6;
-        border-right: 1px solid var(--border-color);
-        display: flex;
-        flex-direction: column;
-        overflow: hidden;
-    }
-
-    :global(.line-number) {
-        line-height: 1.6;
-        font-size: 14px;
-        min-height: 1.6em;
-    }
-
     .code {
-        padding: 20px;
+        flex: 1;
+        padding: 0px 10px;
         font-size: 14px;
         line-height: 1.6;
         white-space: pre;
         overflow-x: auto;
         overflow-y: auto;
+    }
+    
+    .code.markdown-preview {
+        white-space: normal;
+        font-family: var(--font-menu); /* Use a more readable font for reading */
+        color: var(--text-primary);
+    }
+    
+    .code.markdown-preview :global(h1),
+    .code.markdown-preview :global(h2),
+    .code.markdown-preview :global(h3) {
+        color: var(--text-accent);
+        margin-top: 1.5em;
+        margin-bottom: 0.5em;
+        font-weight: 600;
+    }
+    
+    .code.markdown-preview :global(h1) { font-size: 2em; border-bottom: 1px solid var(--border-color); padding-bottom: 0.3em; }
+    .code.markdown-preview :global(h2) { font-size: 1.5em; }
+    
+    .code.markdown-preview :global(p) {
+        margin-bottom: 1em;
+    }
+    
+    .code.markdown-preview :global(pre) {
+        background-color: var(--bg-secondary);
+        padding: 15px;
+        border-radius: 5px;
+        overflow-x: auto;
+        margin-bottom: 1em;
+        border: 1px solid var(--border-color);
+    }
+    
+    .code.markdown-preview :global(code) {
+        font-family: var(--font-mono);
+        background-color: rgba(255,255,255,0.1);
+        padding: 2px 4px;
+        border-radius: 3px;
+    }
+    
+    .code.markdown-preview :global(pre code) {
+        background-color: transparent;
+        padding: 0;
+    }
+
+    .code.markdown-preview :global(ul),
+    .code.markdown-preview :global(ol) {
+        margin-left: 30px;
+        margin-bottom: 1em;
+    }
+
+    .code.markdown-preview :global(li) {
+        margin-bottom: 0.3em;
     }
 
     /* Syntax Highlighting */

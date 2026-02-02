@@ -12,30 +12,66 @@ export class UIManager {
     }
 
     private init(): void {
-        this.generateLineNumbers();
         this.setupFolderToggle();
         this.setupFileClick();
         this.setupSidebarToggle();
         this.setupCopyButton();
+        this.setupScrollSpy();
     }
 
-    private generateLineNumbers(): void {
+    private setupScrollSpy(): void {
         const codeContent = document.getElementById('codeContent');
-        const lineNumbers = document.getElementById('lineNumbers');
+        const sectionLinks = document.querySelectorAll('.section-link');
         
-        if (!codeContent || !lineNumbers) return;
-        
-        const text = codeContent.textContent || codeContent.innerText;
-        const lines = text.split('\n');
-        const lineCount = lines.length;
-        
-        lineNumbers.innerHTML = '';
-        for (let i = 1; i <= lineCount; i++) {
-            const lineDiv = document.createElement('div');
-            lineDiv.textContent = i.toString();
-            lineDiv.className = 'line-number';
-            lineNumbers.appendChild(lineDiv);
-        }
+        if (!codeContent || sectionLinks.length === 0) return;
+
+        // Smooth scroll to section when clicking sidebar links
+        sectionLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const targetId = link.getAttribute('data-target');
+                if (!targetId) return;
+                
+                const targetSection = document.getElementById(targetId);
+                if (targetSection) {
+                    // Update active state immediately
+                    sectionLinks.forEach(l => l.classList.remove('active'));
+                    link.classList.add('active');
+                    
+                    targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // Spy on scroll to update active link
+        // Use IntersectionObserver for better performance
+        const observerOptions = {
+            root: codeContent,
+            rootMargin: '0px',
+            threshold: 0.2 // Trigger when 20% of the section is visible
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const id = entry.target.id;
+                    // Find corresponding link
+                    const activeLink = document.querySelector(`.section-link[data-target="${id}"]`);
+                    
+                    if (activeLink) {
+                        // Remove active class from all links
+                        sectionLinks.forEach(l => l.classList.remove('active'));
+                        // Add active class to current link
+                        activeLink.classList.add('active');
+                    }
+                }
+            });
+        }, observerOptions);
+
+        // Observe all sections
+        document.querySelectorAll('.code-section').forEach(section => {
+            observer.observe(section);
+        });
     }
 
     private setupFolderToggle(): void {

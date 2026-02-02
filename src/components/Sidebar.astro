@@ -1,30 +1,71 @@
 ---
+const currentPath = Astro.url.pathname;
+const isHome = currentPath === '/' || currentPath === '';
+const isLog = currentPath.startsWith('/log');
 ---
 
 <aside class="sidebar">
     <div class="sidebar-header">EXPLORER</div>
     <div class="file-tree">
-        <div class="folder open">
-            <div class="folder-name">
-                <span class="arrow">▼</span>
-                <span class="folder-icon">📁</span>
-                <span>resume</span>
+        {isHome && (
+            <div class="folder open">
+                <div class="folder-name">
+                    <span class="arrow">▼</span>
+                    <span class="folder-icon">📁</span>
+                    <span>OUTLINE</span>
+                </div>
+                <div class="folder-content">
+                    <a href="#section-profile" class="file section-link" data-target="section-profile">
+                        <span class="file-icon">#</span>
+                        <span>profile</span>
+                    </a>
+                    <a href="#section-experience" class="file section-link" data-target="section-experience">
+                        <span class="file-icon">#</span>
+                        <span>experience</span>
+                    </a>
+                    <a href="#section-education" class="file section-link" data-target="section-education">
+                        <span class="file-icon">#</span>
+                        <span>education</span>
+                    </a>
+                    <a href="#section-skills" class="file section-link" data-target="section-skills">
+                        <span class="file-icon">#</span>
+                        <span>skills</span>
+                    </a>
+                </div>
             </div>
-            <div class="folder-content">
-                <div class="file active">
-                    <span class="file-icon">📄</span>
-                    <span>zidan_resume.go</span>
+        )}
+
+        {isLog && (
+            <div class="folder open">
+                <div class="folder-name">
+                    <span class="arrow">▼</span>
+                    <span class="folder-icon">📁</span>
+                    <span>2026</span>
                 </div>
-                <div class="file">
-                    <span class="file-icon">📄</span>
-                    <span>skills.go</span>
-                </div>
-                <div class="file">
-                    <span class="file-icon">📄</span>
-                    <span>experience.go</span>
+                <div class="folder-content">
+                    <a href="/log/first-post" class:list={["file", { active: currentPath.includes('/first-post') }]}>
+                        <span class="file-icon">📄</span>
+                        <span>first-post.md</span>
+                    </a>
                 </div>
             </div>
-        </div>
+        )}
+
+        {!isHome && !isLog && (
+            <div class="folder open">
+                <div class="folder-name">
+                    <span class="arrow">▼</span>
+                    <span class="folder-icon">📁</span>
+                    <span>project</span>
+                </div>
+                <div class="folder-content">
+                    <div class="file active">
+                        <span class="file-icon">📄</span>
+                        <span>README.md</span>
+                    </div>
+                </div>
+            </div>
+        )}
     </div>
     
     <div class="sidebar-footer">

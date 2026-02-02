@@ -5,13 +5,13 @@ const currentPath = Astro.url.pathname;
 <header class="vscode-header">
     <div class="header-left">
         <a href="/" class:list={["menu-item", { active: currentPath === '/' }]}>Home</a>
-        <a href="/projects" class:list={["menu-item", { active: currentPath === '/projects' }]}>Projects</a>
-        <a href="/log" class:list={["menu-item", { active: currentPath === '/log' }]}>Log</a>
-        <a href="/contact" class:list={["menu-item", { active: currentPath === '/contact' }]}>Contact</a>
+        <a href="/projects" class:list={["menu-item", { active: currentPath.startsWith('/projects') }]}>Projects</a>
+        <a href="/log" class:list={["menu-item", { active: currentPath.startsWith('/log') }]}>Log</a>
+        <a href="/contact" class:list={["menu-item", { active: currentPath.startsWith('/contact') }]}>Contact</a>
     </div>
     <div class="header-center">
-        <span class="file-icon">📄</span>
-        <span class="file-name">zidan_resume.go</span>
+        <!-- <span class="file-icon">📄</span> -->
+        <span class="file-name">430am.dev</span>
     </div>
     <div class="header-right">
         <button class="theme-toggle" id="themeToggle" title="Change Theme">

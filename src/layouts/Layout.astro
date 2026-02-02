@@ -1,5 +1,5 @@
 ---
-import '../styles/global.css';
+import '@styles/global.css';
 
 interface Props {
 	title: string;
@@ -41,7 +41,9 @@ const {
 	<body>
 		<slot />
 		
-		<script src="../scripts/theme-manager.ts"></script>
-		<script src="../scripts/ui-interactions.ts"></script>
+		<script>
+			import "@scripts/theme-manager.ts";
+			import "@scripts/ui-interactions.ts";
+		</script>
 	</body>
 </html>
