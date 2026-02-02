@@ -1,0 +1,59 @@
+@import './themes.css';
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-mono);
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    overflow: hidden;
+    height: 100vh;
+    transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg-secondary);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--text-secondary);
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--text-primary);
+}
+
+@media print {
+    .vscode-header,
+    .sidebar,
+    .tab-bar,
+    .status-bar {
+        display: none !important;
+    }
+    
+    .editor {
+        width: 100% !important;
+    }
+    
+    .code-content {
+        overflow: visible !important;
+    }
+    
+    body {
+        background: white !important;
+    }
+    
+    .code {
+        color: black !important;
+    }
+}

@@ -1,0 +1,22 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Sidebar from '../components/Sidebar.astro';
+import Editor from '../components/Editor.astro';
+---
+
+<Layout title="Zidan Omar Hamid - Software Engineer">
+    <Header />
+    
+    <div class="container">
+        <Sidebar />
+        <Editor />
+    </div>
+</Layout>
+
+<style>
+    .container {
+        display: flex;
+        height: calc(100vh - 35px);
+    }
+</style>

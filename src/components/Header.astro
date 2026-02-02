@@ -1,0 +1,108 @@
+---
+const currentPath = Astro.url.pathname;
+---
+
+<header class="vscode-header">
+    <div class="header-left">
+        <a href="/" class:list={["menu-item", { active: currentPath === '/' }]}>Home</a>
+        <a href="/projects" class:list={["menu-item", { active: currentPath === '/projects' }]}>Projects</a>
+        <a href="/log" class:list={["menu-item", { active: currentPath === '/log' }]}>Log</a>
+        <a href="/contact" class:list={["menu-item", { active: currentPath === '/contact' }]}>Contact</a>
+    </div>
+    <div class="header-center">
+        <span class="file-icon">📄</span>
+        <span class="file-name">zidan_resume.go</span>
+    </div>
+    <div class="header-right">
+        <button class="theme-toggle" id="themeToggle" title="Change Theme">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                <path d="M8 1a7 7 0 1 0 0 14A7 7 0 0 0 8 1zm0 13V2a6 6 0 1 1 0 12z"/>
+            </svg>
+        </button>
+    </div>
+</header>
+
+<style>
+    .vscode-header {
+        height: 35px;
+        background-color: var(--bg-secondary);
+        border-bottom: 1px solid var(--border-color);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 10px;
+        font-size: 13px;
+        transition: background-color 0.15s ease;
+    }
+
+    .header-left {
+        display: flex;
+        gap: 15px;
+    }
+
+    .menu-item {
+        cursor: pointer;
+        padding: 0 8px;
+        transition: background-color 0.2s ease;
+        text-decoration: none;
+        color: var(--text-primary);
+        display: flex;
+        align-items: center;
+        height: 35px;
+    }
+
+    .menu-item:hover {
+        background-color: var(--bg-hover);
+    }
+
+    .menu-item.active {
+        color: var(--text-accent);
+        border-bottom: 2px solid var(--accent-color);
+    }
+
+    .header-center {
+        display: none;
+        align-items: center;
+        gap: 8px;
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .file-icon {
+        font-size: 14px;
+    }
+
+    .file-name {
+        color: var(--text-accent);
+        font-weight: 500;
+    }
+
+    .header-right {
+        display: flex;
+        gap: 10px;
+    }
+
+    .theme-toggle {
+        background: none;
+        border: none;
+        color: var(--text-primary);
+        cursor: pointer;
+        padding: 5px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 4px;
+        transition: background-color 0.2s ease;
+    }
+
+    .theme-toggle:hover {
+        background-color: var(--bg-hover);
+    }
+
+    @media (min-width: 1024px) {
+        .header-center {
+            display: flex;
+        }
+    }
+</style>

@@ -1,0 +1,141 @@
+:root {
+    --font-mono: 'JetBrains Mono', 'Courier New', monospace;
+}
+
+/* Ayu Dark Theme (Default) */
+[data-theme="ayu-dark"] {
+    --bg-primary: #0a0e14;
+    --bg-secondary: #0d1017;
+    --bg-tertiary: #151a1e;
+    --bg-hover: #1f2430;
+    --border-color: #1f2430;
+    --text-primary: #b3b1ad;
+    --text-secondary: #5c6773;
+    --text-accent: #ffb454;
+    --keyword-color: #ff8f40;
+    --type-color: #59c2ff;
+    --string-color: #aad94c;
+    --comment-color: #5c6773;
+    --function-color: #ffb454;
+    --number-color: #d2a6ff;
+    --constant-color: #ff8f40;
+    --package-color: #39bae6;
+    --tab-active: #0a0e14;
+    --status-bar-bg: #0d1017;
+    --accent-color: #ffb454;
+}
+
+/* Ayu Mirage Theme */
+[data-theme="ayu-mirage"] {
+    --bg-primary: #1f2430;
+    --bg-secondary: #191e2a;
+    --bg-tertiary: #232834;
+    --bg-hover: #2d3442;
+    --border-color: #2d3442;
+    --text-primary: #cbccc6;
+    --text-secondary: #707a8c;
+    --text-accent: #ffd580;
+    --keyword-color: #ffae57;
+    --type-color: #5ccfe6;
+    --string-color: #bae67e;
+    --comment-color: #5c6773;
+    --function-color: #ffd580;
+    --number-color: #d4bfff;
+    --constant-color: #ffae57;
+    --package-color: #5ccfe6;
+    --tab-active: #1f2430;
+    --status-bar-bg: #191e2a;
+    --accent-color: #ffd580;
+}
+
+/* Ayu Light Theme */
+[data-theme="ayu-light"] {
+    --bg-primary: #fafafa;
+    --bg-secondary: #f3f4f5;
+    --bg-tertiary: #e7e8e9;
+    --bg-hover: #e7e8e9;
+    --border-color: #e7e8e9;
+    --text-primary: #5c6773;
+    --text-secondary: #828c99;
+    --text-accent: #ff9940;
+    --keyword-color: #fa8d3e;
+    --type-color: #399ee6;
+    --string-color: #86b300;
+    --comment-color: #abb0b6;
+    --function-color: #f2ae49;
+    --number-color: #a37acc;
+    --constant-color: #fa8d3e;
+    --package-color: #55b4d4;
+    --tab-active: #fafafa;
+    --status-bar-bg: #f3f4f5;
+    --accent-color: #ff9940;
+}
+
+/* Monokai Theme */
+[data-theme="monokai"] {
+    --bg-primary: #272822;
+    --bg-secondary: #1e1f1c;
+    --bg-tertiary: #2e2f2a;
+    --bg-hover: #3e3d32;
+    --border-color: #3e3d32;
+    --text-primary: #f8f8f2;
+    --text-secondary: #75715e;
+    --text-accent: #f92672;
+    --keyword-color: #f92672;
+    --type-color: #66d9ef;
+    --string-color: #e6db74;
+    --comment-color: #75715e;
+    --function-color: #a6e22e;
+    --number-color: #ae81ff;
+    --constant-color: #ae81ff;
+    --package-color: #66d9ef;
+    --tab-active: #272822;
+    --status-bar-bg: #1e1f1c;
+    --accent-color: #f92672;
+}
+
+/* Dracula Theme */
+[data-theme="dracula"] {
+    --bg-primary: #282a36;
+    --bg-secondary: #21222c;
+    --bg-tertiary: #343746;
+    --bg-hover: #44475a;
+    --border-color: #44475a;
+    --text-primary: #f8f8f2;
+    --text-secondary: #6272a4;
+    --text-accent: #ff79c6;
+    --keyword-color: #ff79c6;
+    --type-color: #8be9fd;
+    --string-color: #f1fa8c;
+    --comment-color: #6272a4;
+    --function-color: #50fa7b;
+    --number-color: #bd93f9;
+    --constant-color: #bd93f9;
+    --package-color: #8be9fd;
+    --tab-active: #282a36;
+    --status-bar-bg: #21222c;
+    --accent-color: #ff79c6;
+}
+
+/* Set default theme for body without data-theme attribute */
+body:not([data-theme]) {
+    --bg-primary: #0a0e14;
+    --bg-secondary: #0d1017;
+    --bg-tertiary: #151a1e;
+    --bg-hover: #1f2430;
+    --border-color: #1f2430;
+    --text-primary: #b3b1ad;
+    --text-secondary: #5c6773;
+    --text-accent: #ffb454;
+    --keyword-color: #ff8f40;
+    --type-color: #59c2ff;
+    --string-color: #aad94c;
+    --comment-color: #5c6773;
+    --function-color: #ffb454;
+    --number-color: #d2a6ff;
+    --constant-color: #ff8f40;
+    --package-color: #39bae6;
+    --tab-active: #0a0e14;
+    --status-bar-bg: #0d1017;
+    --accent-color: #ffb454;
+}

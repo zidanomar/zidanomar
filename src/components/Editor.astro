@@ -1,0 +1,317 @@
+---
+---
+
+<main class="editor">
+    <div class="tab-bar">
+        <div class="tab active">
+            <span class="file-icon">📄</span>
+            <span>zidan_resume.go</span>
+            <span class="close-tab">×</span>
+        </div>
+    </div>
+
+    <div class="code-content">
+        <div class="line-numbers" id="lineNumbers"></div>
+        <div class="code" id="codeContent" set:html={`<span class="keyword">package</span> <span class="package">main</span>
+
+<span class="keyword">import</span> (
+    <span class="string">"fmt"</span>
+    <span class="string">"time"</span>
+)
+
+<span class="comment">// Profile represents the software engineer's professional identity</span>
+<span class="keyword">type</span> <span class="type">Profile</span> <span class="keyword">struct</span> {
+    Name     <span class="type">string</span>
+    Title    <span class="type">string</span>
+    Website  <span class="type">string</span>
+    GitHub   <span class="type">string</span>
+    Email    <span class="type">string</span>
+    Summary  <span class="type">string</span>
+}
+
+<span class="comment">// Experience represents a professional work experience</span>
+<span class="keyword">type</span> <span class="type">Experience</span> <span class="keyword">struct</span> {
+    Company      <span class="type">string</span>
+    Position     <span class="type">string</span>
+    Location     <span class="type">string</span>
+    StartDate    <span class="type">time.Time</span>
+    EndDate      *<span class="type">time.Time</span> <span class="comment">// nil for current position</span>
+    Achievements []<span class="type">string</span>
+}
+
+<span class="comment">// Education represents educational background</span>
+<span class="keyword">type</span> <span class="type">Education</span> <span class="keyword">struct</span> {
+    Institution <span class="type">string</span>
+    Degree      <span class="type">string</span>
+}
+
+<span class="comment">// Skills represents technical expertise</span>
+<span class="keyword">type</span> <span class="type">Skills</span> <span class="keyword">struct</span> {
+    Languages    []<span class="type">string</span>
+    Technologies []<span class="type">string</span>
+}
+
+<span class="keyword">func</span> <span class="function">main</span>() {
+    <span class="comment">// Initialize profile</span>
+    profile := <span class="type">Profile</span>{
+        Name:    <span class="string">"Zidan Omar Hamid"</span>,
+        Title:   <span class="string">"Software Engineer"</span>,
+        Website: <span class="string">"https://430am.dev"</span>,
+        GitHub:  <span class="string">"github.com/zidanomar"</span>,
+        Email:   <span class="string">"zidanomar@430am.dev"</span>,
+        Summary: <span class="string">"Software Engineer with 3+ years of experience building backend and frontend systems for data-driven applications."</span>,
+    }
+
+    <span class="comment">// Professional experiences</span>
+    experiences := []<span class="type">Experience</span>{
+        {
+            Company:  <span class="string">"VIVAVIS Water"</span>,
+            Position: <span class="string">"Software Engineer"</span>,
+            Location: <span class="string">"Istanbul, Türkiye"</span>,
+            StartDate: time.Date(<span class="number">2022</span>, time.May, <span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, time.UTC),
+            EndDate:   <span class="constant">nil</span>, <span class="comment">// Current position</span>
+            Achievements: []<span class="type">string</span>{
+                <span class="string">"Designed a scalable IoT data ingestion services with Go and NodeJS, resulting in high-throughput, reliable data processing from thousands of devices."</span>,
+                <span class="string">"Developed parsers for ModBus and M-Bus IoT protocols, enabling accurate and unified ingestion of diverse device telemetry."</span>,
+                <span class="string">"Integrated TimescaleDB for time-series data aggregation, leading to substantial improvements in query speed and analytics processing."</span>,
+                <span class="string">"Led the migration from VM-based deployments to Kubernetes on Google Cloud, resulting in higher scalability, improved uptime, and simplified DevOps workflows."</span>,
+                <span class="string">"Implemented CI/CD pipelines with Jenkins, leading to automated deployments, faster release cycles, and minimized manual errors."</span>,
+            },
+        },
+        {
+            Company:  <span class="string">"Turkish Aerospace Industries, Inc."</span>,
+            Position: <span class="string">"Software Developer Intern"</span>,
+            Location: <span class="string">"Istanbul, Türkiye"</span>,
+            StartDate: time.Date(<span class="number">2021</span>, time.November, <span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, time.UTC),
+            EndDate:   &time.Time{}, <span class="comment">// Jan 2022</span>
+            Achievements: []<span class="type">string</span>{
+                <span class="string">"Implemented a secure role-based access control (RBAC) system for users and administrators, protecting critical operational workflows."</span>,
+                <span class="string">"Designed and maintained database schema and migration strategy, ensuring data integrity, supporting feature growth, and enabling seamless iteration."</span>,
+            },
+        },
+        {
+            Company:  <span class="string">"Bandung Institute of Technology"</span>,
+            Position: <span class="string">"Network Engineer Intern"</span>,
+            Location: <span class="string">"Bandung, Indonesia"</span>,
+            StartDate: time.Date(<span class="number">2017</span>, time.January, <span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, time.UTC),
+            EndDate:   &time.Time{}, <span class="comment">// Mar 2017</span>
+            Achievements: []<span class="type">string</span>{
+                <span class="string">"Configured and maintained local area network including routing and firewall rules."</span>,
+                <span class="string">"Setup and manage Wi-Fi user access and authentication with MikroTik."</span>,
+                <span class="string">"Assisted students and staff with computer, network, and software related issues."</span>,
+            },
+        },
+    }
+
+    <span class="comment">// Education background</span>
+    education := <span class="type">Education</span>{
+        Institution: <span class="string">"Sakarya University"</span>,
+        Degree:      <span class="string">"Computer Engineering"</span>,
+    }
+
+    <span class="comment">// Technical skills</span>
+    skills := <span class="type">Skills</span>{
+        Languages: []<span class="type">string</span>{
+            <span class="string">"Go"</span>, <span class="string">"Javascript/Typescript"</span>, <span class="string">"NestJS"</span>, 
+            <span class="string">"Go Fiber"</span>, <span class="string">"React"</span>, <span class="string">"Vue"</span>, 
+            <span class="string">"Nuxt"</span>, <span class="string">"Leaflet"</span>, <span class="string">"Apache Echarts"</span>,
+        },
+        Technologies: []<span class="type">string</span>{
+            <span class="string">"Docker"</span>, <span class="string">"Kubernetes"</span>, <span class="string">"GCP"</span>, 
+            <span class="string">"AWS"</span>, <span class="string">"Jenkins"</span>, <span class="string">"Postgres"</span>, 
+            <span class="string">"TimescaleDB"</span>, <span class="string">"MQTT"</span>, <span class="string">"RabbitMQ"</span>, 
+            <span class="string">"Kafka"</span>, <span class="string">"Redis"</span>, <span class="string">"gRPC"</span>,
+        },
+    }
+
+    <span class="comment">// Display resume</span>
+    fmt.Println(<span class="string">"=== RESUME ==="</span>)
+    fmt.Printf(<span class="string">"Name: %s\\n"</span>, profile.Name)
+    fmt.Printf(<span class="string">"Title: %s\\n"</span>, profile.Title)
+    fmt.Printf(<span class="string">"Contact: %s | %s | %s\\n"</span>, profile.Website, profile.GitHub, profile.Email)
+    
+    <span class="keyword">for</span> _, exp := <span class="keyword">range</span> experiences {
+        fmt.Printf(<span class="string">"\\n%s - %s (%s)\\n"</span>, exp.Company, exp.Position, exp.Location)
+        <span class="keyword">for</span> _, achievement := <span class="keyword">range</span> exp.Achievements {
+            fmt.Printf(<span class="string">"  • %s\\n"</span>, achievement)
+        }
+    }
+}
+`}></div>
+    </div>
+
+    <div class="status-bar">
+        <div class="status-left">
+            <span class="status-item">
+                <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor">
+                    <path d="M8 1.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13zM0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8z"/>
+                    <path d="M7.002 11a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM7.1 4.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 4.995z"/>
+                </svg>
+                0
+            </span>
+            <span class="status-item">
+                <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor">
+                    <path d="M8.568 1.031A.5.5 0 0 1 9 1.5V15h-1V1.5a.5.5 0 0 1 .568-.469zM4.5 6h-1a.5.5 0 0 0 0 1h1a.5.5 0 0 0 0-1zm-2 4h-1a.5.5 0 0 0 0 1h1a.5.5 0 0 0 0-1z"/>
+                </svg>
+                0
+            </span>
+        </div>
+        <div class="status-right">
+            <span class="status-item">Ln 1, Col 1</span>
+            <span class="status-item">Spaces: 4</span>
+            <span class="status-item">UTF-8</span>
+            <span class="status-item">Go</span>
+        </div>
+    </div>
+</main>
+
+<style>
+    .editor {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+    }
+
+    .tab-bar {
+        height: 35px;
+        background-color: var(--bg-secondary);
+        border-bottom: 1px solid var(--border-color);
+        display: flex;
+        align-items: flex-end;
+        padding: 0 10px;
+        transition: background-color 0.15s ease;
+    }
+
+    .tab {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 8px 15px;
+        background-color: var(--bg-tertiary);
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
+        cursor: pointer;
+        font-size: 13px;
+        transition: background-color 0.2s ease;
+    }
+
+    .tab.active {
+        background-color: var(--tab-active);
+        border-bottom: 2px solid var(--accent-color);
+    }
+
+    .file-icon {
+        font-size: 14px;
+    }
+
+    .close-tab {
+        margin-left: 5px;
+        opacity: 0;
+        transition: opacity 0.2s ease;
+    }
+
+    .tab:hover .close-tab {
+        opacity: 1;
+    }
+
+    .code-content {
+        flex: 1;
+        display: grid;
+        grid-template-columns: 60px 1fr;
+        overflow: hidden;
+        background-color: var(--bg-primary);
+        transition: background-color 0.15s ease;
+    }
+
+    .line-numbers {
+        padding: 20px 10px;
+        background-color: var(--bg-primary);
+        color: var(--text-secondary);
+        text-align: right;
+        user-select: none;
+        font-size: 14px;
+        line-height: 1.6;
+        border-right: 1px solid var(--border-color);
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+    }
+
+    :global(.line-number) {
+        line-height: 1.6;
+        font-size: 14px;
+        min-height: 1.6em;
+    }
+
+    .code {
+        padding: 20px;
+        font-size: 14px;
+        line-height: 1.6;
+        white-space: pre;
+        overflow-x: auto;
+        overflow-y: auto;
+    }
+
+    /* Syntax Highlighting */
+    .code :global(.keyword) {
+        color: var(--keyword-color);
+        font-weight: 600;
+    }
+
+    .code :global(.type) {
+        color: var(--type-color);
+        font-weight: 500;
+    }
+
+    .code :global(.string) {
+        color: var(--string-color);
+    }
+
+    .code :global(.comment) {
+        color: var(--comment-color);
+        font-style: italic;
+    }
+
+    .code :global(.function) {
+        color: var(--function-color);
+        font-weight: 600;
+    }
+
+    .code :global(.number) {
+        color: var(--number-color);
+    }
+
+    .code :global(.constant) {
+        color: var(--constant-color);
+    }
+
+    .code :global(.package) {
+        color: var(--package-color);
+    }
+
+    .status-bar {
+        height: 22px;
+        background-color: var(--status-bar-bg);
+        border-top: 1px solid var(--border-color);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 15px;
+        font-size: 12px;
+        color: var(--text-secondary);
+        transition: background-color 0.15s ease;
+    }
+
+    .status-left,
+    .status-right {
+        display: flex;
+        gap: 15px;
+    }
+
+    .status-item {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+    }
+</style>
