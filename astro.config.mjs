@@ -18,4 +18,5 @@ export default defineConfig({
     },
   },
   site: 'https://430am.dev',
+  base: '/',
 });
