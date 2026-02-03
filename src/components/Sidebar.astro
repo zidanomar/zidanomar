@@ -77,6 +77,15 @@ import { THEMES, THEME_LABELS } from '@scripts/theme-manager';
                     <option value={theme}>{THEME_LABELS[theme]}</option>
                 ))}
             </select>
+            <script is:inline>
+                try {
+                    const saved = localStorage.getItem('theme');
+                    const select = document.getElementById('themeSelect');
+                    if (saved && select) {
+                        select.value = saved;
+                    }
+                } catch (e) {}
+            </script>
         </div>
     </div>
 </aside>

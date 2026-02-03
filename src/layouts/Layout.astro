@@ -39,6 +39,18 @@ const {
 		<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
 	</head>
 	<body>
+		<script is:inline>
+			(function() {
+				const STORAGE_KEY = 'theme';
+				const DEFAULT_THEME = 'synthwave-84';
+				const THEMES = ['ayu-dark', 'ayu-mirage', 'ayu-light', 'monokai', 'dracula', 'synthwave-84', 'nord', 'solarized-dark', 'github-dark', 'night-owl', 'one-dark-pro'];
+				
+				const saved = localStorage.getItem(STORAGE_KEY);
+				const theme = (saved && THEMES.includes(saved)) ? saved : DEFAULT_THEME;
+				
+				document.body.setAttribute('data-theme', theme);
+			})();
+		</script>
 		<slot />
 		
 		<script>
