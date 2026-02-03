@@ -17,6 +17,6 @@ export default defineConfig({
       cssMinify: true,
     },
   },
-  site: 'https://430am.dev',
+  site: 'https://zidanomar.github.io',
   base: '/',
 });
