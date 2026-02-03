@@ -17,4 +17,6 @@ export default defineConfig({
       cssMinify: true,
     },
   },
+  site: 'https://430am.dev',
+  base: '/',
 });
