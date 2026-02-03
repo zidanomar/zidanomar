@@ -118,6 +118,18 @@ const customTheme = {
             <span class="status-item">{language}</span>
         </div>
     </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+             const lines = document.querySelectorAll('.code .line');
+             lines.forEach(line => {
+                 const text = line.textContent.trim();
+                 if (text.includes('* PROFILE')) line.id = 'section-profile';
+                 else if (text.includes('* EXPERIENCES')) line.id = 'section-experience';
+                 else if (text.includes('* EDUCATIONS')) line.id = 'section-education';
+                 else if (text.includes('* TECH STACK')) line.id = 'section-skills';
+             });
+        });
+    </script>
 </main>
 
 <style>
@@ -187,6 +199,7 @@ const customTheme = {
         white-space: pre;
         overflow-x: auto;
         overflow-y: auto;
+        scroll-behavior: smooth;
     }
     
     .code.markdown-preview {
