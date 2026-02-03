@@ -1,5 +1,13 @@
 @import './themes.css';
 
+@font-face {
+  font-family: 'JetBrains Mono';
+  src: url('/fonts/jetbrains.ttf') format('truetype');
+  font-weight: 100 800;
+  font-style: normal;
+  font-display: swap;
+}
+
 * {
     margin: 0;
     padding: 0;
