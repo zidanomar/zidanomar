@@ -1,44 +1,125 @@
 ---
 import Layout from '@layouts/Layout.astro';
-import Header from '@components/Header.astro';
-import Sidebar from '@components/Sidebar.astro';
-import Editor from '@components/Editor.astro';
 ---
 
-<Layout title="404: Not Found - Log">
-    <Header />
-    <div class="container">
-        <Sidebar />
-        <Editor fileName="404.go" language="Go">
-            <div class="code-section" set:html={`
-<span class="keyword">package</span> <span class="package">main</span>
+<Layout title="404 — 430am.dev">
+    <div class="error-page">
+        <div class="error-block">
 
-<span class="keyword">import</span> (
-    <span class="string">"fmt"</span>
-    <span class="string">"net/http"</span>
-)
+            <p class="ln ln-1">
+                <span class="t-error">error</span><span class="t-code">[E404]</span><span class="t-msg">: route not found</span>
+            </p>
 
-<span class="function">func</span> <span class="function">main</span>() {
-    <span class="comment">// 404 Error: Page Not Found</span>
-    <span class="comment">// The requested resource could not be found on this server.</span>
-    
-    <span class="type">panic</span>(<span class="string">"404: Page Not Found"</span>)
-    
-    <span class="comment">// Try navigating back to safe harbor:</span>
-    <span class="comment">// - <a href="/" style="color: var(--text-accent); text-decoration: underline;">Home</a></span>
-    <span class="comment">// - <a href="/log" style="color: var(--text-accent); text-decoration: underline;">Log</a></span>
-}
-            `}></div>
-        </Editor>
+            <p class="ln ln-2">
+                <span class="t-arrow"> --&gt; </span><span class="t-path">430am.dev{Astro.url.pathname}</span>
+            </p>
+
+            <p class="ln ln-3 pipe-only">
+                <span class="t-pipe">    |</span>
+            </p>
+
+            <p class="ln ln-4">
+                <span class="t-linenum"> 1  </span><span class="t-pipe">|</span>
+                <span class="t-code-line"> GET <span class="t-path">{Astro.url.pathname}</span> HTTP/1.1</span>
+            </p>
+
+            <p class="ln ln-5">
+                <span class="t-pipe">    | </span><span class="t-carets">^^^ this path does not resolve</span>
+            </p>
+
+            <p class="ln ln-6 pipe-only">
+                <span class="t-pipe">    |</span>
+            </p>
+
+            <p class="ln ln-7">
+                <span class="t-note-key">    = note</span><span class="t-sep">: </span><span class="t-note-val">page has been removed or never existed</span>
+            </p>
+
+            <p class="ln ln-8">
+                <span class="t-help-key">    = help</span><span class="t-sep">: </span><span class="t-help-val">navigate back to <a href="/" class="t-link">~/home</a></span>
+            </p>
+
+            <p class="ln ln-9 exit-line">
+                <span class="t-dim">process exited with code </span><span class="t-exitcode">404</span>
+            </p>
+
+        </div>
     </div>
 </Layout>
 
 <style>
-    .container {
-        display: flex;
-        height: 100vh;
-        overflow: hidden;
-        background-color: var(--bg-primary);
-        color: var(--text-primary);
-    }
+.error-page {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 80px 2rem 5rem;
+}
+
+.error-block {
+    max-width: 600px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+/* ── Lines ── */
+.ln {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    line-height: 1.8;
+    white-space: pre;
+    opacity: 0;
+    margin: 0;
+}
+
+.ln-1  { animation: fadeUp 0.4s ease forwards 0.05s; }
+.ln-2  { animation: fadeUp 0.4s ease forwards 0.15s; }
+.ln-3  { animation: fadeUp 0.4s ease forwards 0.22s; }
+.ln-4  { animation: fadeUp 0.4s ease forwards 0.30s; }
+.ln-5  { animation: fadeUp 0.4s ease forwards 0.38s; }
+.ln-6  { animation: fadeUp 0.4s ease forwards 0.44s; }
+.ln-7  { animation: fadeUp 0.4s ease forwards 0.54s; }
+.ln-8  { animation: fadeUp 0.4s ease forwards 0.62s; }
+.ln-9  { animation: fadeUp 0.4s ease forwards 0.80s; margin-top: 1.5rem; }
+
+@keyframes fadeUp {
+    from { opacity: 0; transform: translateY(6px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Token colors ── */
+.t-error     { color: var(--keyword-color); font-weight: 600; }
+.t-code      { color: var(--number-color); }
+.t-msg       { color: var(--text-primary); }
+.t-arrow     { color: var(--text-secondary); }
+.t-path      { color: var(--type-color); }
+.t-pipe      { color: var(--border-color); }
+.t-linenum   { color: var(--text-secondary); }
+.t-code-line { color: var(--text-secondary); }
+.t-carets    { color: var(--keyword-color); }
+.t-note-key  { color: var(--comment-color); }
+.t-help-key  { color: var(--comment-color); }
+.t-sep       { color: var(--text-secondary); }
+.t-note-val  { color: var(--text-secondary); }
+.t-help-val  { color: var(--text-secondary); }
+.t-dim       { color: var(--text-secondary); opacity: 0.5; }
+.t-exitcode  { color: var(--number-color); }
+
+.t-link {
+    color: var(--text-accent);
+    text-decoration: none;
+    transition: opacity 0.15s ease;
+}
+
+.t-link:hover {
+    opacity: 0.7;
+    text-decoration: none;
+    color: var(--text-accent);
+}
+
+@media (max-width: 480px) {
+    .ln { font-size: 0.7rem; white-space: normal; }
+}
 </style>

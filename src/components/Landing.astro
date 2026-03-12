@@ -1,0 +1,110 @@
+---
+interface Props {
+    company: string;
+}
+const { company } = Astro.props;
+---
+<section id="home" class="section section--landing">
+    <div class="landing-card">
+
+        <div class="avatar reveal-1">ZO</div>
+
+        <h1 class="greeting reveal-2">Hi, I'm Zidan.</h1>
+
+        <p class="bio reveal-3">
+            A Software Engineer with 3+ years of experience building backend and frontend systems for data-driven applications.
+            Currently at <a href="#experience" class="accent-link">{company} ↗</a>
+        </p>
+
+        <a href="#contact" class="say-hello reveal-4">Say hello</a>
+    </div>
+</section>
+
+<style>
+.section--landing {
+    align-items: center;
+}
+
+.landing-card {
+    max-width: 600px;
+    width: 100%;
+}
+
+.avatar {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: var(--text-accent);
+    letter-spacing: 0.04em;
+    margin-bottom: 1.75rem;
+}
+
+.greeting {
+    font-size: clamp(1.5rem, 4vw, 2rem);
+    font-weight: 600;
+    color: var(--text-primary);
+    letter-spacing: -0.02em;
+    margin-bottom: 1rem;
+    line-height: 1.2;
+}
+
+.bio {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    line-height: 1.85;
+    margin-bottom: 1.75rem;
+}
+
+.accent-link {
+    color: var(--text-accent);
+    text-decoration: none;
+    transition: opacity 0.15s ease;
+}
+
+.accent-link:hover {
+    opacity: 0.75;
+    text-decoration: none;
+    color: var(--text-accent);
+}
+
+
+.say-hello {
+    display: inline-block;
+    border: 1px solid var(--border-color);
+    color: var(--text-secondary);
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    padding: 7px 20px;
+    border-radius: 3px;
+    text-decoration: none;
+    transition: border-color 0.15s ease, color 0.15s ease;
+    letter-spacing: 0.04em;
+}
+
+.say-hello:hover {
+    border-color: var(--accent-color);
+    color: var(--text-accent);
+    text-decoration: none;
+}
+
+.reveal-1, .reveal-2, .reveal-3, .reveal-4 {
+    opacity: 0;
+}
+
+.reveal-1 { animation: fadeUp 0.5s ease forwards 0.05s; }
+.reveal-2 { animation: fadeUp 0.5s ease forwards 0.15s; }
+.reveal-3 { animation: fadeUp 0.5s ease forwards 0.26s; }
+.reveal-4 { animation: fadeUp 0.5s ease forwards 0.38s; }
+
+@keyframes fadeUp {
+    from { opacity: 0; transform: translateY(12px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+</style>

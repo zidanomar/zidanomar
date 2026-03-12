@@ -1,0 +1,72 @@
+---
+---
+<header class="site-header">
+    <span class="site-id">430am.dev</span>
+    <nav class="header-nav">
+        <a href="https://github.com/zidanomar" target="_blank" rel="noopener" class="nav-link">Github</a>
+        <a href="mailto:zidanomar@430am.dev" class="nav-link">Email</a>
+        <button class="theme-toggle" id="themeToggle" title="Cycle theme">◑</button>
+    </nav>
+</header>
+
+<style>
+.site-header {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 2rem;
+    background: var(--bg-primary);
+    z-index: 100;
+    transition: background-color 0.15s ease;
+}
+
+.site-id {
+    font-size: 0.8rem;
+    color: var(--text-accent);
+    font-weight: 500;
+    letter-spacing: 0.04em;
+}
+
+.header-nav {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.nav-link {
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    text-decoration: none;
+    letter-spacing: 0.04em;
+    transition: color 0.15s ease;
+}
+
+.nav-link:hover {
+    color: var(--text-primary);
+    text-decoration: none;
+}
+
+.theme-toggle {
+    background: none;
+    border: none;
+    color: var(--text-secondary);
+    cursor: pointer;
+    font-size: 1rem;
+    line-height: 1;
+    padding: 4px;
+    display: flex;
+    align-items: center;
+    transition: color 0.15s ease;
+}
+
+.theme-toggle:hover {
+    color: var(--text-accent);
+}
+
+@media (max-width: 768px) {
+    .site-header { padding: 0 1.25rem; }
+}
+</style>
