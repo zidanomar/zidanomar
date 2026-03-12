@@ -9,70 +9,111 @@
 }
 
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-    font-family: var(--font-mono);
-    background-color: var(--bg-primary);
-    color: var(--text-primary);
-    overflow: hidden;
-    height: 100vh;
-    transition: background-color 0.15s ease, color 0.15s ease;
+  font-family: var(--font-mono);
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  transition:
+    background-color 0.15s ease,
+    color 0.15s ease;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 a {
-    color: var(--accent-color);
-    text-decoration: none;
-    transition: color 0.2s ease, opacity 0.2s ease;
+  color: var(--accent-color);
+  text-decoration: none;
+  transition:
+    color 0.2s ease,
+    opacity 0.2s ease;
 }
 
 a:hover {
-    color: var(--keyword-color);
-    text-decoration: underline;
+  color: var(--keyword-color);
+  text-decoration: underline;
 }
 
 ::-webkit-scrollbar {
-    width: 10px;
-    height: 10px;
+  width: 10px;
+  height: 10px;
 }
 
 ::-webkit-scrollbar-track {
-    background: var(--bg-secondary);
+  background: var(--bg-secondary);
 }
 
 ::-webkit-scrollbar-thumb {
-    background: var(--text-secondary);
-    border-radius: 5px;
+  background: var(--text-secondary);
+  border-radius: 5px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: var(--text-primary);
+  background: var(--text-primary);
+}
+
+/* ── Shared section layout ── */
+.section {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 80px 2rem 5rem;
+}
+
+.section-inner {
+  max-width: 600px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.section-heading {
+  font-size: 0.65rem;
+  color: var(--text-secondary);
+  font-weight: 400;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  margin-bottom: 2.25rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--border-color);
+}
+
+/* ── Scroll-reveal (toggled by JS) ── */
+.tl-reveal {
+  opacity: 0;
+  transform: translateY(12px);
+  transition:
+    opacity 0.45s ease,
+    transform 0.45s ease;
+}
+
+.tl-reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── Nav dot active state (toggled by JS) ── */
+.dot.active {
+  background: var(--text-accent) !important;
+  transform: scale(1.75);
+}
+
+@media (max-width: 768px) {
+  .section {
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+  }
 }
 
 @media print {
-    .vscode-header,
-    .sidebar,
-    .tab-bar,
-    .status-bar {
-        display: none !important;
-    }
-    
-    .editor {
-        width: 100% !important;
-    }
-    
-    .code-content {
-        overflow: visible !important;
-    }
-    
-    body {
-        background: white !important;
-    }
-    
-    .code {
-        color: black !important;
-    }
+  .site-header,
+  .section-nav {
+    display: none !important;
+  }
 }

@@ -1,0 +1,263 @@
+---
+interface Experience {
+    year: string;
+    company: string;
+    role: string;
+    tags: string[];
+    work: string[];
+}
+
+interface Education {
+    year: string;
+    school: string;
+    major: string;
+}
+
+interface Props {
+    experiences: Experience[];
+    educations: Education[];
+}
+
+const { experiences,  educations } = Astro.props;
+---
+<section id="experience" class="section section--experience">
+    <div class="section-inner">
+        <h2 class="section-heading">experience</h2>
+
+        <div class="timeline">
+            {experiences.map((exp, i) => (
+                <article class:list={["tl-entry", "tl-reveal", { "tl-entry--last": i === experiences.length - 1 }]}>
+                    <div class="tl-left">
+                        <span class="tl-year">{exp.year}</span>
+                        {i===0 && <span class="tl-present">now</span>}
+                    </div>
+                    <div class="tl-spine">
+                        <div class="tl-dot"></div>
+                    </div>
+                    <div class="tl-body">
+                        <div class="tl-header">
+                            <h3 class="tl-company">{exp.company}</h3>
+                            <span class="tl-role">{exp.role}</span>
+                        </div>
+                        {exp.tags.length > 0 && (
+                            <div class="tl-tags">
+                                {exp.tags.map(tag => <span>{tag}</span>)}
+                            </div>
+                        )}
+                        <ul class="tl-work">
+                            {exp.work.map(item => <li>{item}</li>)}
+                        </ul>
+                    </div>
+                </article>
+            ))}
+        </div>
+
+        <h2 class="section-heading" style="margin-top: 4rem;">education</h2>
+        <div class="edu-list">
+            {educations.map(edu => (
+                <div class="edu-item tl-reveal">
+                    <div class="edu-header">
+                        <span class="edu-school">{edu.school}</span>
+                        <span class="edu-year">{edu.year}</span>
+                    </div>
+                    <span class="edu-major">{edu.major}</span>
+                </div>
+            ))}
+        </div>
+    </div>
+</section>
+
+<style>
+/* Timeline */
+.timeline {
+    display: flex;
+    flex-direction: column;
+}
+
+.tl-entry {
+    display: grid;
+    grid-template-columns: 44px 20px 1fr;
+}
+
+.tl-left {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    padding-right: 0.75rem;
+    padding-top: 0.4rem;
+}
+
+.tl-year {
+    font-size: 0.7rem;
+    color: var(--text-accent);
+    letter-spacing: 0.04em;
+    line-height: 1;
+}
+
+.tl-present {
+    font-size: 0.6rem;
+    color: var(--text-secondary);
+    margin-top: 3px;
+    letter-spacing: 0.04em;
+}
+
+.tl-spine {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 0.4rem;
+    position: relative;
+}
+
+.tl-entry:not(.tl-entry--last) .tl-spine::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 1px;
+    background: var(--border-color);
+}
+
+.tl-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--accent-color);
+    border: 2px solid var(--bg-primary);
+    box-shadow: 0 0 0 1px var(--accent-color);
+    flex-shrink: 0;
+    position: relative;
+    z-index: 1;
+}
+
+.tl-body {
+    padding-left: 1.25rem;
+    padding-bottom: 3rem;
+}
+
+.tl-entry--last > .tl-body {
+    padding-bottom: 0;
+}
+
+.tl-header {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    margin-bottom: 0.625rem;
+}
+
+.tl-company {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.tl-role {
+    font-size: 0.7rem;
+    color: var(--text-accent);
+    font-weight: 400;
+    letter-spacing: 0.03em;
+}
+
+.tl-tags {
+    display: flex;
+    gap: 0.35rem;
+    flex-wrap: wrap;
+    margin-bottom: 0.75rem;
+}
+
+.tl-tags span {
+    font-size: 0.625rem;
+    color: var(--text-secondary);
+    border: 1px solid var(--border-color);
+    padding: 2px 6px;
+    border-radius: 2px;
+}
+
+.tl-work {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+}
+
+.tl-work li {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    line-height: 1.65;
+    padding-left: 1rem;
+    position: relative;
+}
+
+.tl-work li::before {
+    content: '–';
+    position: absolute;
+    left: 0;
+    color: var(--border-color);
+}
+
+/* Education */
+.edu-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+.edu-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    padding-left: 0.875rem;
+    border-left: 2px solid var(--border-color);
+}
+
+.edu-header {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.edu-school {
+    font-size: 0.875rem;
+    color: var(--text-primary);
+    font-weight: 500;
+}
+
+.edu-year {
+    font-size: 0.7rem;
+    color: var(--text-accent);
+    letter-spacing: 0.04em;
+    flex-shrink: 0;
+}
+
+.edu-major {
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+}
+
+@media (max-width: 768px) {
+    .tl-entry {
+        grid-template-columns: 36px 1fr;
+    }
+
+    .tl-spine {
+        display: none;
+    }
+
+    .tl-left {
+        grid-column: 1;
+        grid-row: 1;
+        padding-right: 0.5rem;
+    }
+
+    .tl-body {
+        grid-column: 2;
+        grid-row: 1;
+        padding-left: 0.5rem;
+    }
+}
+</style>

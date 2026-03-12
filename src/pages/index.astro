@@ -1,23 +1,111 @@
 ---
 import Layout from '@layouts/Layout.astro';
-import Header from '@components/Header.astro';
-import Sidebar from '@components/Sidebar.astro';
-import Editor from '@components/Editor.astro';
-import { resumeCode } from '../data/resume';
+import SiteHeader from '@components/SiteHeader.astro';
+import SectionNav from '@components/SectionNav.astro';
+import Landing from '@components/Landing.astro';
+import ExperienceSection from '@components/ExperienceSection.astro';
+import ContactSection from '@components/ContactSection.astro';
+import Footer from '@components/Footer.astro';
+
+const experiences = [
+    {
+        year: "2022",
+        company: "VIVAVIS Water",
+        role: "Software Engineer",
+        tags: ["Go", "NodeJS", "TimescaleDB", "K8s", "GCP"],
+        work: [
+            "Designed scalable IoT ingestion for thousands of devices.",
+            "Built parsers for ModBus & M-Bus protocols.",
+            "Improved query speeds with TimescaleDB time-series data.",
+            "Migrated VM deployments to GKE (Kubernetes).",
+            "Automated releases with Jenkins CI/CD pipelines.",
+        ],
+    },
+    {
+        year: "2021",
+        company: "Turkish Aerospace Industries",
+        role: "Software Developer Intern",
+        tags: [],
+        work: [
+            "Implemented secure RBAC for mission-critical workflows.",
+            "Designed scalable database schemas & migration strategies.",
+        ],
+    },
+    {
+        year: "2017",
+        company: "Bandung Institute of Technology",
+        role: "Network Engineer Intern",
+        tags: [],
+        work: [
+            "Managed routing, firewalls, and campus Wi-Fi authentication.",
+        ],
+    },
+];
+
+const educations = [
+    {
+        year: "2024",
+        school: "Sakarya University",
+        major: "Computer Engineering",
+    },
+    {
+        year: "2018",
+        school: "Daarut Tauhiid Vocational High School",
+        major: "Computer and Network Engineering",
+    },
+];
+
+const contacts = [
+    {
+        label: "email",
+        value: "zidanomar@430am.dev",
+        href: "mailto:zidanomar@430am.dev",
+    },
+
+];
 ---
 
-<Layout title="Zidan Omar Hamid - Software Engineer">
-    <Header />
-    
-    <div class="container">
-        <Sidebar />
-        <Editor fileName="zidan_resume.go" language="Go" code={resumeCode} />
+<Layout title="Zidan Omar Hamid — Software Engineer">
+    <div class="page">
+        <SiteHeader />
+        <SectionNav />
+        <Landing company={experiences[0].company} />
+        <ExperienceSection experiences={experiences} educations={educations} />
+        <ContactSection contacts={contacts} />
+        <Footer />
     </div>
 </Layout>
 
 <style>
-    .container {
-        display: flex;
-        height: calc(100vh - 35px);
-    }
+.page {
+    min-height: 100vh;
+}
 </style>
+
+<script>
+    const SECTION_IDS = ['home', 'experience', 'contact'];
+    const dots = document.querySelectorAll<HTMLElement>('.dot');
+
+    function updateDots() {
+        let current = 'home';
+        for (const id of SECTION_IDS) {
+            const el = document.getElementById(id);
+            if (el && el.getBoundingClientRect().top <= window.innerHeight * 0.5) {
+                current = id;
+            }
+        }
+        dots.forEach(dot => {
+            dot.classList.toggle('active', dot.dataset.section === current);
+        });
+    }
+
+    window.addEventListener('scroll', updateDots, { passive: true });
+    updateDots();
+
+    const observer = new IntersectionObserver(
+        entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }),
+        { threshold: 0.1 }
+    );
+
+    document.querySelectorAll('.tl-reveal').forEach(el => observer.observe(el));
+</script>
