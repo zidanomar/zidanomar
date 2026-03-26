@@ -24,6 +24,8 @@ All content arrays are defined in `src/pages/index.astro` and passed as props to
 
 ### Component structure
 
+`src/layouts/Layout.astro` is the base HTML wrapper used by all pages. It imports `global.css`, sets meta tags, and contains the FOUC-prevention inline script (see Theme system below).
+
 Each section is its own component in `src/components/`:
 
 | Component | Props |
@@ -35,6 +37,8 @@ Each section is its own component in `src/components/`:
 | `ContactSection.astro` | `contacts[]` |
 | `Footer.astro` | none (uses `new Date().getFullYear()`) |
 
+Adding a new section requires: (1) a new component with a matching `id` attribute on its root element, (2) adding that `id` to `SECTION_IDS` in `index.astro`'s `<script>`, and (3) a new dot in `SectionNav.astro` with `data-section` matching the id.
+
 ### Styles: what goes where
 
 - `src/styles/global.css` — shared cross-component classes: `.section`, `.section-inner`, `.section-heading`, `.tl-reveal` / `.tl-reveal.visible` (JS-toggled scroll reveal), `.dot.active` (JS-toggled nav dot). Any class toggled by JS in `index.astro` must live here, not in a component `<style>` block, because Astro scopes component styles.
@@ -43,9 +47,12 @@ Each section is its own component in `src/components/`:
 
 ### Theme system
 
-Themes are applied via `data-theme` on `<body>`. `src/scripts/theme-manager.ts` exports a `ThemeManager` class that reads/writes `localStorage` and cycles themes. Keyboard shortcuts: `Ctrl+K, T` cycles; `Ctrl+P` prints. Default theme: `ayu-mirage`.
+Themes are applied via `data-theme` on `<body>`. Two parts work together:
 
-Adding a new theme requires entries in both `themes.css` and `theme-manager.ts` (`Theme` type + `THEME_LABELS`).
+- **FOUC prevention** — an `is:inline` script in `Layout.astro` reads `localStorage` and sets `data-theme` synchronously before first paint. Its hardcoded default is `ayu-mirage`.
+- **ThemeManager** (`src/scripts/theme-manager.ts`) — runs after DOMContentLoaded, handles `#themeSelect` (dropdown) and `#themeToggle` (button) in `SiteHeader.astro` by ID, and cycles themes. Its hardcoded default is `synthwave-84`. Keyboard shortcuts: `Ctrl+K, T` cycles; `Ctrl+P` prints.
+
+Both defaults should be kept in sync. Adding a new theme requires entries in `themes.css`, the `Theme` type and `THEME_LABELS` in `theme-manager.ts`, and the `THEMES` array in the inline script in `Layout.astro`.
 
 ### Scroll reveal
 
