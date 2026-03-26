@@ -21,6 +21,8 @@ body {
   transition:
     background-color 0.15s ease,
     color 0.15s ease;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 html {
@@ -40,27 +42,55 @@ a:hover {
   text-decoration: underline;
 }
 
+/* ── Focus states for keyboard nav ── */
+:focus-visible {
+  outline: 2px solid var(--accent-color);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* ── Reduced motion ── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ── Selection ── */
+::selection {
+  background: var(--accent-color);
+  color: var(--bg-primary);
+}
+
 ::-webkit-scrollbar {
-  width: 10px;
-  height: 10px;
+  width: 8px;
+  height: 8px;
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--bg-secondary);
+  background: transparent;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--text-secondary);
-  border-radius: 5px;
+  background: var(--border-color);
+  border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--text-primary);
+  background: var(--text-secondary);
 }
 
 /* ── Shared section layout ── */
 .section {
   min-height: 100vh;
+  min-height: 100dvh;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -82,6 +112,7 @@ a:hover {
   margin-bottom: 2.25rem;
   padding-bottom: 0.75rem;
   border-bottom: 1px solid var(--border-color);
+  transition: border-color 0.15s ease;
 }
 
 /* ── Scroll-reveal (toggled by JS) ── */
@@ -89,8 +120,8 @@ a:hover {
   opacity: 0;
   transform: translateY(12px);
   transition:
-    opacity 0.45s ease,
-    transform 0.45s ease;
+    opacity 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 .tl-reveal.visible {

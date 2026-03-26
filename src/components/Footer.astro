@@ -2,13 +2,25 @@
 const year = new Date().getFullYear();
 ---
 <footer class="site-footer">
-    <p class="footer-line">© {year} Zidan Omar Hamid</p>
+    <div class="footer-inner">
+        <p class="footer-line">© {year} Zidan Omar Hamid</p>
+        <p class="footer-line footer-sub">Built with care, deployed at 4:30am.</p>
+    </div>
 </footer>
 
 <style>
 .site-footer {
-    padding: 2rem;
+    padding: 2.5rem 2rem;
     border-top: 1px solid var(--border-color);
+}
+
+.footer-inner {
+    max-width: 600px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 1rem;
 }
 
 .footer-line {
@@ -16,5 +28,19 @@ const year = new Date().getFullYear();
     color: var(--text-secondary);
     letter-spacing: 0.06em;
     opacity: 0.4;
+    transition: opacity 0.2s ease;
+}
+
+.site-footer:hover .footer-line {
+    opacity: 0.65;
+}
+
+.footer-sub {
+    color: var(--comment-color);
+}
+
+@media (max-width: 768px) {
+    .site-footer { padding: 2rem 1.25rem; }
+    .footer-inner { flex-direction: column; gap: 0.25rem; }
 }
 </style>

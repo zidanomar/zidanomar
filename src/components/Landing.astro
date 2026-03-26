@@ -7,16 +7,45 @@ const { company } = Astro.props;
 <section id="home" class="section section--landing">
     <div class="landing-card">
 
-        <div class="avatar reveal-1">ZO</div>
+        <div class="avatar reveal-1" aria-hidden="true">ZO</div>
 
-        <h1 class="greeting reveal-2">Hi, I'm Zidan.</h1>
+        <h1 class="greeting reveal-2"><span class="typewriter">Hi, I'm Zidan.</span><span class="greeting-cursor" aria-hidden="true">_</span></h1>
 
         <p class="bio reveal-3">
-            A Software Engineer with 3+ years of experience building backend and frontend systems for data-driven applications.
-            Currently at <a href="#experience" class="accent-link">{company} ↗</a>
+            <span class="bio-typed"></span><span class="bio-cursor" aria-hidden="true">_</span>
         </p>
 
         <a href="#contact" class="say-hello reveal-4">Say hello</a>
+
+        <script define:vars={{ company }}>
+            const BIO_PREFIX = 'A Software Engineer with 3+ years of experience building backend and frontend systems for data-driven applications. Currently at ';
+            const BIO_LINK = `${company} ↗`;
+            const FULL_TEXT = BIO_PREFIX + BIO_LINK;
+            const GREETING_DONE = 1200;
+            const CHAR_SPEED = 22;
+
+            setTimeout(() => {
+                const typed = document.querySelector('.bio-typed');
+                const greetingCursor = document.querySelector('.greeting-cursor');
+                const button = document.querySelector('.say-hello');
+                if (!typed) return;
+
+                if (greetingCursor) greetingCursor.classList.add('hidden');
+
+                let i = 0;
+                const interval = setInterval(() => {
+                    typed.textContent += FULL_TEXT[i];
+                    i++;
+                    if (i >= FULL_TEXT.length) {
+                        clearInterval(interval);
+                        // Wrap company name in a link
+                        typed.innerHTML = BIO_PREFIX +
+                            `<a href="#experience" class="accent-link">${BIO_LINK}</a>`;
+                        if (button) button.classList.add('show');
+                    }
+                }, CHAR_SPEED);
+            }, GREETING_DONE);
+        </script>
     </div>
 </section>
 
@@ -31,8 +60,8 @@ const { company } = Astro.props;
 }
 
 .avatar {
-    width: 42px;
-    height: 42px;
+    width: 44px;
+    height: 44px;
     border-radius: 50%;
     background: var(--bg-secondary);
     border: 1px solid var(--border-color);
@@ -44,6 +73,8 @@ const { company } = Astro.props;
     color: var(--text-accent);
     letter-spacing: 0.04em;
     margin-bottom: 1.75rem;
+    box-shadow: 0 0 0 3px var(--bg-primary), 0 0 0 4px var(--border-color);
+    transition: box-shadow 0.3s ease, border-color 0.3s ease;
 }
 
 .greeting {
@@ -55,23 +86,62 @@ const { company } = Astro.props;
     line-height: 1.2;
 }
 
+.typewriter {
+    display: inline-block;
+    overflow: hidden;
+    white-space: nowrap;
+    width: 0;
+    animation: typing 0.8s steps(14) 0.4s forwards;
+}
+
+@keyframes typing {
+    to { width: 14ch; }
+}
+
+.greeting-cursor {
+    color: var(--accent-color);
+    animation: cursor-blink 0.6s step-end infinite;
+    font-weight: 300;
+}
+
+.greeting-cursor.hidden {
+    display: none;
+}
+
+@keyframes cursor-blink {
+    50% { opacity: 0; }
+}
+
 .bio {
     font-size: 0.875rem;
     color: var(--text-secondary);
     line-height: 1.85;
-    margin-bottom: 1.75rem;
+    margin-bottom: 2rem;
+    min-height: 3.5em;
+}
+
+.bio-cursor {
+    color: var(--accent-color);
+    animation: bio-blink 0.6s step-end infinite;
+    font-weight: 300;
+}
+
+@keyframes bio-blink {
+    50% { opacity: 0; }
 }
 
 .accent-link {
     color: var(--text-accent);
     text-decoration: none;
     transition: opacity 0.15s ease;
+    border-bottom: 1px solid color-mix(in srgb, var(--text-accent) 30%, transparent);
 }
 
 .accent-link:hover {
-    opacity: 0.75;
+    opacity: 0.8;
     text-decoration: none;
     color: var(--text-accent);
+    border-bottom-color: var(--text-accent);
 }
 
 
@@ -81,30 +151,43 @@ const { company } = Astro.props;
     color: var(--text-secondary);
     font-family: var(--font-mono);
     font-size: 0.8rem;
-    padding: 7px 20px;
+    padding: 8px 24px;
     border-radius: 3px;
     text-decoration: none;
-    transition: border-color 0.15s ease, color 0.15s ease;
+    transition: border-color 0.2s ease, color 0.2s ease, background-color 0.2s ease, transform 0.15s ease;
     letter-spacing: 0.04em;
+    position: relative;
 }
 
 .say-hello:hover {
     border-color: var(--accent-color);
     color: var(--text-accent);
+    background-color: color-mix(in srgb, var(--accent-color) 8%, transparent);
     text-decoration: none;
+}
+
+.say-hello:active {
+    transform: scale(0.97);
 }
 
 .reveal-1, .reveal-2, .reveal-3, .reveal-4 {
     opacity: 0;
 }
 
-.reveal-1 { animation: fadeUp 0.5s ease forwards 0.05s; }
-.reveal-2 { animation: fadeUp 0.5s ease forwards 0.15s; }
-.reveal-3 { animation: fadeUp 0.5s ease forwards 0.26s; }
-.reveal-4 { animation: fadeUp 0.5s ease forwards 0.38s; }
+.reveal-1 { animation: fadeUp 0.55s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards 0.05s; }
+.reveal-2 { animation: fadeUp 0.55s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards 0.2s; }
+.reveal-3 { animation: fadeUp 0.55s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards 1.1s; }
+.reveal-4 {
+    transition: opacity 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transform: translateY(8px);
+}
+.reveal-4.show {
+    opacity: 1;
+    transform: translateY(0);
+}
 
 @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(12px); }
+    from { opacity: 0; transform: translateY(16px); }
     to   { opacity: 1; transform: translateY(0); }
 }
 </style>

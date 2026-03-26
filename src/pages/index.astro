@@ -84,7 +84,7 @@ const contacts = [
 
 <script>
     const SECTION_IDS = ['home', 'experience', 'contact'];
-    const dots = document.querySelectorAll<HTMLElement>('.dot');
+    const dotLinks = document.querySelectorAll<HTMLElement>('.dot-link');
 
     function updateDots() {
         let current = 'home';
@@ -94,8 +94,11 @@ const contacts = [
                 current = id;
             }
         }
-        dots.forEach(dot => {
-            dot.classList.toggle('active', dot.dataset.section === current);
+        dotLinks.forEach(link => {
+            const dot = link.querySelector('.dot');
+            if (dot) {
+                dot.classList.toggle('active', link.dataset.section === current);
+            }
         });
     }
 

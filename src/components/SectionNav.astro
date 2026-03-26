@@ -1,21 +1,40 @@
 ---
 ---
 <nav class="section-nav" aria-label="Sections">
-    <a href="#home"       class="dot" data-section="home"       title="Home"></a>
-    <a href="#experience" class="dot" data-section="experience" title="Experience"></a>
-    <a href="#contact"    class="dot" data-section="contact"    title="Contact"></a>
+    <a href="#home"       class="dot-link" data-section="home"       aria-label="Home section">
+        <span class="dot"></span>
+    </a>
+    <a href="#experience" class="dot-link" data-section="experience" aria-label="Experience section">
+        <span class="dot"></span>
+    </a>
+    <a href="#contact"    class="dot-link" data-section="contact"    aria-label="Contact section">
+        <span class="dot"></span>
+    </a>
 </nav>
 
 <style>
 .section-nav {
     position: fixed;
-    right: 1.5rem;
+    right: 1rem;
     top: 50%;
     transform: translateY(-50%);
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 4px;
     z-index: 100;
+}
+
+.dot-link {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 8px 10px;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.dot-link:hover {
+    text-decoration: none;
 }
 
 .dot {
@@ -24,7 +43,13 @@
     border-radius: 50%;
     background: var(--border-color);
     display: block;
-    transition: background 0.2s ease, transform 0.2s ease;
+    flex-shrink: 0;
+    transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.dot-link:hover .dot {
+    background: var(--text-secondary);
+    transform: scale(1.5);
 }
 
 @media (max-width: 768px) {
