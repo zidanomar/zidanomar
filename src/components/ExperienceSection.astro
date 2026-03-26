@@ -26,7 +26,7 @@ const { experiences,  educations } = Astro.props;
 
         <div class="timeline">
             {experiences.map((exp, i) => (
-                <article class:list={["tl-entry", "tl-reveal", { "tl-entry--last": i === experiences.length - 1 }]}>
+                <article class:list={["tl-entry", "tl-reveal", "tl-reveal--from-left", { "tl-entry--last": i === experiences.length - 1 }]} style={`transition-delay: ${i * 80}ms`}>
                     <div class="tl-left">
                         <span class="tl-year">{exp.year}</span>
                         {i===0 && <span class="tl-present">now</span>}
@@ -52,10 +52,10 @@ const { experiences,  educations } = Astro.props;
             ))}
         </div>
 
-        <h2 class="section-heading" style="margin-top: 4rem;">education</h2>
+        <h2 class="section-heading tl-reveal" style="margin-top: 4rem;">education</h2>
         <div class="edu-list">
-            {educations.map(edu => (
-                <div class="edu-item tl-reveal">
+            {educations.map((edu, i) => (
+                <div class="edu-item tl-reveal" style={`transition-delay: ${i * 80}ms`}>
                     <div class="edu-header">
                         <span class="edu-school">{edu.school}</span>
                         <span class="edu-year">{edu.year}</span>
@@ -237,7 +237,10 @@ const { experiences,  educations } = Astro.props;
     gap: 0.25rem;
     padding-left: 0.875rem;
     border-left: 2px solid var(--border-color);
-    transition: border-color 0.2s ease;
+    transition:
+        border-color 0.2s ease,
+        opacity 0.55s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+        transform 0.55s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 .edu-item:hover {

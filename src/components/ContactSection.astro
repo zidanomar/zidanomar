@@ -14,9 +14,9 @@ const { contacts } = Astro.props;
 ---
 <section id="contact" class="section section--contact">
     <div class="section-inner">
-        <h2 class="section-heading">contact</h2>
+        <h2 class="section-heading tl-reveal">contact</h2>
 
-        <div class="terminal-prompt tl-reveal">
+        <div class="terminal-prompt tl-reveal" style="transition-delay: 80ms">
             <span class="prompt-sigil">›</span>
             <span class="prompt-text">open to new opportunities</span>
             <span class="prompt-cursor" aria-hidden="true">_</span>
@@ -26,7 +26,8 @@ const { contacts } = Astro.props;
             {contacts.map((contact, i) => (
                 <a
                     href={contact.href}
-                    class="contact-item tl-reveal"
+                    class="contact-item tl-reveal tl-reveal--from-right"
+                    style={`transition-delay: ${160 + i * 70}ms`}
                     target={contact.external ? "_blank" : undefined}
                     rel={contact.external ? "noopener" : undefined}
                 >
@@ -96,7 +97,10 @@ const { contacts } = Astro.props;
     color: var(--text-primary);
     overflow: hidden;
     border-radius: 2px;
-    transition: border-color 0.2s ease;
+    transition:
+        border-color 0.2s ease,
+        opacity 0.55s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+        transform 0.55s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 .contact-item:first-child {
