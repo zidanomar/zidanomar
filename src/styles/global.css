@@ -118,15 +118,31 @@ a:hover {
 /* ── Scroll-reveal (toggled by JS) ── */
 .tl-reveal {
   opacity: 0;
-  transform: translateY(12px);
+  transform: translateY(16px);
   transition:
-    opacity 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94),
-    transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    opacity 0.55s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    transform 0.55s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 .tl-reveal.visible {
   opacity: 1;
   transform: translateY(0);
+}
+
+.tl-reveal--from-left {
+  transform: translateX(-28px);
+}
+
+.tl-reveal--from-left.visible {
+  transform: translateX(0);
+}
+
+.tl-reveal--from-right {
+  transform: translateX(28px);
+}
+
+.tl-reveal--from-right.visible {
+  transform: translateX(0);
 }
 
 /* ── Nav dot active state (toggled by JS) ── */
