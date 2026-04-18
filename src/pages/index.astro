@@ -4,6 +4,8 @@ import SiteHeader from '@components/SiteHeader.astro';
 import SectionNav from '@components/SectionNav.astro';
 import Landing from '@components/Landing.astro';
 import ExperienceSection from '@components/ExperienceSection.astro';
+import ProjectsSection from '@components/ProjectsSection.astro';
+import EducationSection from '@components/EducationSection.astro';
 import ContactSection from '@components/ContactSection.astro';
 import Footer from '@components/Footer.astro';
 
@@ -12,34 +14,53 @@ const experiences = [
         year: "2022",
         company: "VIVAVIS Water",
         role: "Software Engineer",
-        tags: ["Go", "NodeJS", "TimescaleDB", "K8s", "GCP"],
+        tags: ["Go", "NodeJS", "TimescaleDB", "K8s", "GCP", "Jenkins", "gRPC", "websocket", "RabbitMQ", "React", "Leaflet", "Apache Echarts"],
         work: [
-            "Designed scalable IoT ingestion for thousands of devices.",
-            "Built parsers for ModBus & M-Bus protocols.",
-            "Improved query speeds with TimescaleDB time-series data.",
-            "Migrated VM deployments to GKE (Kubernetes).",
-            "Automated releases with Jenkins CI/CD pipelines.",
+            "Built scalable IoT ingestion in Go and Node.js for thousands of devices.",
+            "Wrote production parsers for ModBus & M-Bus industrial protocols.",
+            "Integrated TimescaleDB for time-series aggregation, speeding analytics.",
+            "Built realtime dashboards and analytics with React, Leaflet, and Apache ECharts.",
+            "Migrated VM deployments to GKE with near-zero downtime.",
+            "Built Jenkins CI/CD pipelines to automate releases end-to-end.",
         ],
     },
     {
         year: "2021",
         company: "Turkish Aerospace Industries",
         role: "Software Developer Intern",
-        tags: [],
+        tags: ["React", "NodeJS", "Postgres"],
         work: [
-            "Implemented secure RBAC for mission-critical workflows.",
-            "Designed scalable database schemas & migration strategies.",
+            "Implemented RBAC securing critical admin workflows with granular access.",
+            "Designed DB schema and migration strategy for iterative releases.",
         ],
     },
     {
         year: "2017",
         company: "Bandung Institute of Technology",
         role: "Network Engineer Intern",
-        tags: [],
+        tags: ["Debian", "MikroTik"],
         work: [
-            "Managed routing, firewalls, and campus Wi-Fi authentication.",
+            "Configured LAN routing and firewall rules for stable, secure operation.",
+            "Managed Wi-Fi auth via MikroTik; supported campus users.",
         ],
     },
+];
+
+const projects = [
+    {
+        name: "Homelab",
+        subtitle: "Bare-metal Kubernetes cluster and self-hosted LLM on Raspberry Pi.",
+        kind: "personal",
+        tags: ["k3s", "Raspberry Pi", "Traefik", "Gitea", "Pi-hole", "Local LLM"],
+        work: [
+            "Built a 3-node bare-metal k3s cluster (1 control plane + 2 workers) running staging workloads.",
+            "Self-hosted CI/CD via Gitea Actions for automated build and deploy pipelines.",
+            "Configured Traefik ingress with Let's Encrypt TLS alongside Pi-hole local DNS.",
+            "Managed hostname-based routing across the LAN with no external DNS dependency.",
+            "Runs a dedicated local LLM inference node for hands-on work with open-source models.",
+        ],
+    },
+
 ];
 
 const educations = [
@@ -61,7 +82,18 @@ const contacts = [
         value: "zidanomar@430am.dev",
         href: "mailto:zidanomar@430am.dev",
     },
-
+    {
+        label: "github",
+        value: "github.com/zidanomar",
+        href: "https://github.com/zidanomar",
+        external: true,
+    },
+    {
+        label: "linkedin",
+        value: "linkedin.com/in/zidanomar",
+        href: "https://linkedin.com/in/zidanomar",
+        external: true
+    }
 ];
 ---
 
@@ -70,7 +102,9 @@ const contacts = [
         <SiteHeader />
         <SectionNav />
         <Landing company={experiences[0].company} />
-        <ExperienceSection experiences={experiences} educations={educations} />
+        <ExperienceSection experiences={experiences} />
+        <ProjectsSection projects={projects} />
+        <EducationSection educations={educations} />
         <ContactSection contacts={contacts} />
         <Footer />
     </div>
@@ -83,7 +117,7 @@ const contacts = [
 </style>
 
 <script>
-    const SECTION_IDS = ['home', 'experience', 'contact'];
+    const SECTION_IDS = ['home', 'experience', 'projects', 'education', 'contact'];
     const dotLinks = document.querySelectorAll<HTMLElement>('.dot-link');
 
     function updateDots() {

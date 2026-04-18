@@ -7,18 +7,11 @@ interface Experience {
     work: string[];
 }
 
-interface Education {
-    year: string;
-    school: string;
-    major: string;
-}
-
 interface Props {
     experiences: Experience[];
-    educations: Education[];
 }
 
-const { experiences,  educations } = Astro.props;
+const { experiences } = Astro.props;
 ---
 <section id="experience" class="section section--experience">
     <div class="section-inner">
@@ -49,19 +42,6 @@ const { experiences,  educations } = Astro.props;
                         </ul>
                     </div>
                 </article>
-            ))}
-        </div>
-
-        <h2 class="section-heading tl-reveal" style="margin-top: 4rem;">education</h2>
-        <div class="edu-list">
-            {educations.map((edu, i) => (
-                <div class="edu-item tl-reveal" style={`transition-delay: ${i * 80}ms`}>
-                    <div class="edu-header">
-                        <span class="edu-school">{edu.school}</span>
-                        <span class="edu-year">{edu.year}</span>
-                    </div>
-                    <span class="edu-major">{edu.major}</span>
-                </div>
             ))}
         </div>
     </div>
@@ -221,54 +201,6 @@ const { experiences,  educations } = Astro.props;
 }
 
 .tl-entry:hover .tl-work li::before {
-    color: var(--text-secondary);
-}
-
-/* Education */
-.edu-list {
-    display: flex;
-    flex-direction: column;
-    gap: 1.25rem;
-}
-
-.edu-item {
-    display: flex;
-    flex-direction: column;
-    gap: 0.25rem;
-    padding-left: 0.875rem;
-    border-left: 2px solid var(--border-color);
-    transition:
-        border-color 0.2s ease,
-        opacity 0.55s cubic-bezier(0.25, 0.46, 0.45, 0.94),
-        transform 0.55s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-}
-
-.edu-item:hover {
-    border-left-color: var(--accent-color);
-}
-
-.edu-header {
-    display: flex;
-    align-items: baseline;
-    justify-content: space-between;
-    gap: 1rem;
-}
-
-.edu-school {
-    font-size: 0.875rem;
-    color: var(--text-primary);
-    font-weight: 500;
-}
-
-.edu-year {
-    font-size: 0.7rem;
-    color: var(--text-accent);
-    letter-spacing: 0.04em;
-    flex-shrink: 0;
-}
-
-.edu-major {
-    font-size: 0.75rem;
     color: var(--text-secondary);
 }
 
