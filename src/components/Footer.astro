@@ -3,44 +3,87 @@ const year = new Date().getFullYear();
 ---
 <footer class="site-footer">
     <div class="footer-inner">
-        <p class="footer-line">© {year} Zidan Omar Hamid</p>
-        <p class="footer-line footer-sub">Built with care, deployed at 4:30am.</p>
+        <div class="footer-left">
+            <span class="footer-name">Zidan Omar Hamid</span>
+            <span class="footer-copy">© {year}</span>
+        </div>
+
+        <p class="footer-tagline">
+            <span class="footer-cursor" aria-hidden="true">›</span>
+            Built with care, deployed at 4:30am.
+        </p>
     </div>
+
+    <div class="footer-divider" aria-hidden="true"></div>
 </footer>
 
 <style>
 .site-footer {
-    padding: 2.5rem 2rem;
+    padding: 2.5rem 2rem 2rem;
     border-top: 1px solid var(--border-color);
+    transition: border-color 0.15s ease;
 }
 
 .footer-inner {
-    max-width: 600px;
+    max-width: 720px;
     margin: 0 auto;
     display: flex;
     justify-content: space-between;
-    align-items: baseline;
+    align-items: center;
     gap: 1rem;
 }
 
-.footer-line {
-    font-size: 0.65rem;
-    color: var(--text-secondary);
-    letter-spacing: 0.06em;
-    opacity: 0.4;
+.footer-left {
+    display: flex;
+    align-items: baseline;
+    gap: 0.6rem;
+}
+
+.footer-name {
+    font-size: 1rem;
+    color: var(--text-primary);
+    font-weight: 500;
+    letter-spacing: 0.03em;
+    opacity: 0.5;
     transition: opacity 0.2s ease;
 }
 
-.site-footer:hover .footer-line {
-    opacity: 0.65;
+.footer-copy {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    opacity: 0.4;
+    letter-spacing: 0.04em;
+    transition: opacity 0.2s ease;
 }
 
-.footer-sub {
+.footer-tagline {
+    font-size: 1rem;
     color: var(--comment-color);
+    letter-spacing: 0.04em;
+    opacity: 0.45;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    transition: opacity 0.2s ease;
+}
+
+.footer-cursor {
+    color: var(--string-color);
+    font-size: 0.85rem;
+    line-height: 1;
+}
+
+.site-footer:hover .footer-name,
+.site-footer:hover .footer-copy,
+.site-footer:hover .footer-tagline {
+    opacity: 0.8;
+}
+
+.footer-divider {
+    display: none;
 }
 
 @media (max-width: 768px) {
-    .site-footer { padding: 2rem 1.25rem; }
-    .footer-inner { flex-direction: column; gap: 0.25rem; }
+    .site-footer { padding: 2rem 1.25rem 1.5rem; }
 }
 </style>

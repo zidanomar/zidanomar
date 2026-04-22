@@ -25,7 +25,7 @@ const { educations } = Astro.props;
                     </div>
                     <div class="edu-meta">
                         <span class="edu-major">{edu.major}</span>
-                         <span class="edu-location">{edu.location}</span>
+                        {edu.location && <span class="edu-location">{edu.location}</span>}
                     </div>
                 </div>
             ))}
@@ -70,7 +70,7 @@ const { educations } = Astro.props;
 .edu-school {
     font-size: 1rem;
     color: var(--text-primary);
-    font-weight: 500;
+    font-weight: 600;
 }
 
 .edu-year {
@@ -82,23 +82,34 @@ const { educations } = Astro.props;
 
 .edu-meta {
     display: flex;
-    align-items: center;
-    gap: 0.5rem;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 1rem;
 }
 
 .edu-major {
-    font-size: 0.875rem;
-    color: var(--text-secondary);
+    font-size: 0.8rem;
+    color: var(--text-accent);
+    opacity: 0.8;
+    letter-spacing: 0.03em;
 }
 
 .edu-location {
     font-size: 0.8rem;
-    color: var(--text-secondary);
-    opacity: 0.6;
+    color: var(--comment-color);
+    letter-spacing: 0.02em;
+    flex-shrink: 0;
 }
 
-.edu-location::before {
-    content: "·";
-    margin-right: 0.5rem;
+@media (max-width: 768px) {
+    .edu-meta {
+        flex-direction: column-reverse;
+        align-items: flex-start;
+        gap: 0.25rem;
+    }
+
+    .edu-location {
+        margin-top: 0.25rem;
+    }
 }
 </style>
