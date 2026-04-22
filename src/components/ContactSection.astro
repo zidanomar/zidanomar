@@ -22,24 +22,29 @@ const { contacts } = Astro.props;
             <span class="prompt-cursor" aria-hidden="true">_</span>
         </div>
 
-        <div class="contact-links">
+        <ul class="contact-links" role="list">
             {contacts.map((contact, i) => (
-                <a
-                    href={contact.href}
-                    class="contact-item tl-reveal tl-reveal--from-right"
-                    style={`transition-delay: ${160 + i * 70}ms`}
-                    target={contact.external ? "_blank" : undefined}
-                    rel={contact.external ? "noopener" : undefined}
-                >
-                    <span class="item-fill" aria-hidden="true"></span>
-                    <span class="item-index">0{i + 1}</span>
-                    <span class="item-label">{contact.label}</span>
-                    <span class="item-dots" aria-hidden="true"></span>
-                    <span class="item-value">{contact.value}</span>
-                    <span class="item-arrow" aria-hidden="true">↗</span>
-                </a>
+                <li>
+                    <a
+                        href={contact.href}
+                        class="contact-item tl-reveal tl-reveal--from-right"
+                        style={`transition-delay: ${160 + i * 70}ms`}
+                        target={contact.external ? "_blank" : undefined}
+                        rel={contact.external ? "noopener noreferrer" : undefined}
+                        aria-label={contact.external
+                            ? `${contact.label}: ${contact.value} (opens in new tab)`
+                            : `${contact.label}: ${contact.value}`}
+                    >
+                        <span class="item-fill" aria-hidden="true"></span>
+                        <span class="item-index" aria-hidden="true">0{i + 1}</span>
+                        <span class="item-label" aria-hidden="true">{contact.label}</span>
+                        <span class="item-dots" aria-hidden="true"></span>
+                        <span class="item-value" aria-hidden="true">{contact.value}</span>
+                        <span class="item-arrow" aria-hidden="true">↗</span>
+                    </a>
+                </li>
             ))}
-        </div>
+        </ul>
 
     </div>
 </section>
@@ -81,9 +86,15 @@ const { contacts } = Astro.props;
 
 /* ── Contact links ── */
 .contact-links {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 3rem;
     display: flex;
     flex-direction: column;
-    margin-bottom: 3rem;
+}
+
+.contact-links li {
+    display: block;
 }
 
 .contact-item {
@@ -103,7 +114,7 @@ const { contacts } = Astro.props;
         transform 0.55s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
-.contact-item:first-child {
+.contact-links li:first-child .contact-item {
     border-top: 1px solid var(--border-color);
 }
 

@@ -23,10 +23,60 @@ body {
     color 0.15s ease;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
 
 html {
   scroll-behavior: smooth;
+}
+
+/* Remove 300ms tap delay and disable double-tap zoom on interactive controls */
+a,
+button,
+[role='button'],
+.dot-link,
+.contact-item,
+.say-hello,
+.theme-toggle {
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* ── Screen-reader-only utility ── */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ── Skip link (keyboard accessibility) ── */
+.skip-link {
+  position: fixed;
+  top: 0.5rem;
+  left: 0.5rem;
+  padding: 0.5rem 1rem;
+  background: var(--bg-secondary);
+  color: var(--text-accent);
+  border: 1px solid var(--accent-color);
+  border-radius: 4px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  z-index: 1000;
+  transform: translateY(-150%);
+  transition: transform 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.skip-link:focus-visible {
+  transform: translateY(0);
+  text-decoration: none;
+  color: var(--text-accent);
 }
 
 a {
@@ -117,8 +167,8 @@ a:hover {
   transition: border-color 0.15s ease;
 }
 
-/* ── Scroll-reveal (toggled by JS) ── */
-.tl-reveal {
+/* ── Scroll-reveal (toggled by JS — only hidden when JS is available) ── */
+.js .tl-reveal {
   opacity: 0;
   transform: translateY(16px);
   transition:
@@ -126,25 +176,35 @@ a:hover {
     transform 0.55s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
-.tl-reveal.visible {
+.js .tl-reveal.visible {
   opacity: 1;
   transform: translateY(0);
 }
 
-.tl-reveal--from-left {
+.js .tl-reveal--from-left {
   transform: translateX(-28px);
 }
 
-.tl-reveal--from-left.visible {
+.js .tl-reveal--from-left.visible {
   transform: translateX(0);
 }
 
-.tl-reveal--from-right {
+.js .tl-reveal--from-right {
   transform: translateX(28px);
 }
 
-.tl-reveal--from-right.visible {
+.js .tl-reveal--from-right.visible {
   transform: translateX(0);
+}
+
+/* Respect reduced-motion: reveal content without animation */
+@media (prefers-reduced-motion: reduce) {
+  .js .tl-reveal,
+  .js .tl-reveal--from-left,
+  .js .tl-reveal--from-right {
+    opacity: 1 !important;
+    transform: none !important;
+  }
 }
 
 /* ── Nav dot active state (toggled by JS) ── */

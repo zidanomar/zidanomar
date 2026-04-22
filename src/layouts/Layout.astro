@@ -6,9 +6,9 @@ interface Props {
 	description?: string;
 }
 
-const { 
-	title, 
-	description = "Zidan Omar Hamid - Software Engineer with 3+ years of experience building backend and frontend systems for data-driven applications." 
+const {
+	title,
+	description = "Zidan Omar Hamid - Software Engineer with 3+ years of experience building backend and frontend systems for data-driven applications."
 } = Astro.props;
 ---
 
@@ -17,23 +17,31 @@ const {
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="description" content={description} />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+		<meta name="theme-color" content="#0f1419" id="metaThemeColor" />
+		<meta name="color-scheme" content="dark light" />
 		<link rel="icon" type="image/png" href="/memoji.png" />
+		<link rel="preload" href="/fonts/jetbrains.ttf" as="font" type="font/ttf" crossorigin />
+		<link rel="preload" href="/memoji.png" as="image" fetchpriority="high" />
 		<meta name="generator" content={Astro.generator} />
-		
+
 		<title>{title}</title>
 		<meta name="author" content="Zidan Omar Hamid" />
 		<meta name="keywords" content="Software Engineer, Go, TypeScript, NestJS, React, Vue, Kubernetes, Docker, IoT, Backend Developer, Frontend Developer" />
-		
+
 		<meta property="og:type" content="website" />
 		<meta property="og:title" content={title} />
 		<meta property="og:description" content={description} />
 		<meta property="og:site_name" content="Zidan Omar Hamid" />
-		
-		
+
+
 		<meta name="twitter:card" content="summary_large_image" />
 		<meta name="twitter:title" content={title} />
 		<meta name="twitter:description" content={description} />
+
+		<script is:inline>
+			document.documentElement.classList.add('js');
+		</script>
 	</head>
 	<body>
 		<script is:inline>
@@ -41,15 +49,20 @@ const {
 				const STORAGE_KEY = 'theme';
 				const DEFAULT_THEME = 'ayu-mirage';
 				const THEMES = ['ayu-dark', 'ayu-mirage', 'ayu-light', 'monokai', 'dracula', 'nord', 'solarized-dark', 'github-dark', 'night-owl', 'one-dark-pro'];
-				
+
 				const saved = localStorage.getItem(STORAGE_KEY);
 				const theme = (saved && THEMES.includes(saved)) ? saved : DEFAULT_THEME;
-				
+
 				document.body.setAttribute('data-theme', theme);
 			})();
 		</script>
+
+		<a href="#main" class="skip-link">Skip to content</a>
+
+		<div id="themeAnnouncer" class="sr-only" role="status" aria-live="polite"></div>
+
 		<slot />
-		
+
 		<script>
 			import "@scripts/theme-manager.ts";
 		</script>

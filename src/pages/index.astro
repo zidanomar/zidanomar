@@ -106,11 +106,13 @@ const contacts = [
     <div class="page">
         <SiteHeader />
         <SectionNav />
-        <Landing company={experiences[0].company} />
-        <ExperienceSection experiences={experiences} />
-        <ProjectsSection projects={projects} />
-        <EducationSection educations={educations} />
-        <ContactSection contacts={contacts} />
+        <main id="main" tabindex="-1">
+            <Landing company={experiences[0].company} />
+            <ExperienceSection experiences={experiences} />
+            <ProjectsSection projects={projects} />
+            <EducationSection educations={educations} />
+            <ContactSection contacts={contacts} />
+        </main>
         <Footer />
     </div>
 </Layout>
@@ -119,35 +121,80 @@ const contacts = [
 .page {
     min-height: 100vh;
 }
+
+main {
+    display: block;
+}
+
+main:focus {
+    outline: none;
+}
 </style>
 
 <script>
     const SECTION_IDS = ['home', 'experience', 'projects', 'education', 'contact'];
-    const dotLinks = document.querySelectorAll<HTMLElement>('.dot-link');
+    const dotLinks = document.querySelectorAll<HTMLAnchorElement>('.dot-link');
+    const sections = SECTION_IDS
+        .map(id => document.getElementById(id))
+        .filter((el): el is HTMLElement => el !== null);
 
-    function updateDots() {
-        let current = 'home';
-        for (const id of SECTION_IDS) {
-            const el = document.getElementById(id);
-            if (el && el.getBoundingClientRect().top <= window.innerHeight * 0.5) {
-                current = id;
-            }
-        }
+    let currentActive = '';
+    let rafId = 0;
+
+    function applyActiveState(activeId: string) {
+        if (activeId === currentActive) return;
+        currentActive = activeId;
         dotLinks.forEach(link => {
             const dot = link.querySelector('.dot');
-            if (dot) {
-                dot.classList.toggle('active', link.dataset.section === current);
+            const isActive = link.dataset.section === activeId;
+            if (dot) dot.classList.toggle('active', isActive);
+            if (isActive) {
+                link.setAttribute('aria-current', 'true');
+            } else {
+                link.removeAttribute('aria-current');
             }
         });
     }
 
-    window.addEventListener('scroll', updateDots, { passive: true });
+    function updateDots() {
+        rafId = 0;
+        const midViewport = window.innerHeight * 0.5;
+        let current = sections[0]?.id ?? 'home';
+        for (const el of sections) {
+            if (el.getBoundingClientRect().top <= midViewport) {
+                current = el.id;
+            }
+        }
+        applyActiveState(current);
+    }
+
+    function scheduleUpdate() {
+        if (rafId) return;
+        rafId = requestAnimationFrame(updateDots);
+    }
+
+    window.addEventListener('scroll', scheduleUpdate, { passive: true });
+    window.addEventListener('resize', scheduleUpdate, { passive: true });
     updateDots();
 
-    const observer = new IntersectionObserver(
-        entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }),
-        { threshold: 0.1 }
-    );
+    // Scroll-reveal with IntersectionObserver, gracefully falls back if unsupported
+    if ('IntersectionObserver' in window) {
+        const observer = new IntersectionObserver(
+            entries =>
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target);
+                    }
+                }),
+            { threshold: 0.1, rootMargin: '0px 0px -40px 0px' }
+        );
+        document.querySelectorAll('.tl-reveal').forEach(el => observer.observe(el));
+    } else {
+        // Fallback: reveal everything immediately
+        document
+            .querySelectorAll('.tl-reveal')
+            .forEach(el => el.classList.add('visible'));
+    }
 
-    document.querySelectorAll('.tl-reveal').forEach(el => observer.observe(el));
 </script>

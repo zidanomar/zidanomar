@@ -1,42 +1,52 @@
 ---
+const sections = [
+    { id: 'home', label: 'Home' },
+    { id: 'experience', label: 'Experience' },
+    { id: 'projects', label: 'Projects' },
+    { id: 'education', label: 'Education' },
+    { id: 'contact', label: 'Contact' },
+];
 ---
 <nav class="section-nav" aria-label="Sections">
-    <a href="#home"       class="dot-link" data-section="home"       aria-label="Home section">
-        <span class="dot"></span>
-    </a>
-    <a href="#experience" class="dot-link" data-section="experience" aria-label="Experience section">
-        <span class="dot"></span>
-    </a>
-    <a href="#projects"   class="dot-link" data-section="projects"   aria-label="Projects section">
-        <span class="dot"></span>
-    </a>
-    <a href="#education"  class="dot-link" data-section="education"  aria-label="Education section">
-        <span class="dot"></span>
-    </a>
-    <a href="#contact"    class="dot-link" data-section="contact"    aria-label="Contact section">
-        <span class="dot"></span>
-    </a>
+    {sections.map(({ id, label }, i) => (
+        <a
+            href={`#${id}`}
+            class="dot-link"
+            data-section={id}
+            aria-label={`${label} section`}
+            style={`--dot-delay: ${i * 60}ms`}
+        >
+            <span class="dot"></span>
+        </a>
+    ))}
 </nav>
 
 <style>
 .section-nav {
     position: fixed;
-    right: 1rem;
+    right: 0.75rem;
     top: 50%;
     transform: translateY(-50%);
     display: flex;
     flex-direction: column;
-    gap: 4px;
-    z-index: 100;
+    gap: 2px;
+    z-index: 50;
 }
 
 .dot-link {
+    position: relative;
     display: flex;
     align-items: center;
-    justify-content: flex-end;
-    padding: 8px 10px;
+    justify-content: center;
+    width: 24px;
+    min-height: 24px;
+    padding: 10px 8px;
     text-decoration: none;
     cursor: pointer;
+    border-radius: 3px;
+    opacity: 0;
+    animation: dot-enter 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+    animation-delay: var(--dot-delay, 0ms);
 }
 
 .dot-link:hover {
@@ -44,18 +54,87 @@
 }
 
 .dot {
-    width: 4px;
-    height: 4px;
+    position: relative;
+    width: 5px;
+    height: 5px;
     border-radius: 50%;
     background: var(--border-color);
     display: block;
     flex-shrink: 0;
-    transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+    transition: background 0.25s ease, transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.25s ease;
+}
+
+.dot::before {
+    content: '';
+    position: absolute;
+    inset: -3px;
+    border-radius: 50%;
+    background: var(--text-accent);
+    opacity: 0;
+    transform: scale(0.6);
+    transition: opacity 0.25s ease, transform 0.25s ease;
+    pointer-events: none;
 }
 
 .dot-link:hover .dot {
     background: var(--text-secondary);
-    transform: scale(1.5);
+    transform: scale(1.6);
+}
+
+.dot-link:focus-visible {
+    outline: 2px solid var(--accent-color);
+    outline-offset: 2px;
+}
+
+/* Active dot: breathing halo to signal current position */
+.dot.active {
+    background: var(--text-accent) !important;
+    transform: scale(1.75);
+}
+
+.dot.active::before {
+    opacity: 0.35;
+    transform: scale(1);
+    animation: dot-pulse 2.2s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+@keyframes dot-enter {
+    from {
+        opacity: 0;
+        transform: translateX(6px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes dot-pulse {
+    0% {
+        opacity: 0.35;
+        transform: scale(1);
+    }
+    70% {
+        opacity: 0;
+        transform: scale(2.4);
+    }
+    100% {
+        opacity: 0;
+        transform: scale(2.4);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .dot-link {
+        opacity: 1;
+        animation: none;
+    }
+
+    .dot.active::before {
+        animation: none;
+        opacity: 0.4;
+        transform: scale(1.6);
+    }
 }
 
 @media (max-width: 768px) {

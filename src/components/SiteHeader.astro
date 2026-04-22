@@ -3,8 +3,23 @@
 <header class="site-header">
     <a href="#home" class="site-id">430am.dev</a>
     <nav class="header-nav" aria-label="Primary">
-        <a href="https://github.com/zidanomar" target="_blank" rel="noopener" class="nav-link" aria-label="GitHub profile">Github</a>
-        <button class="theme-toggle" id="themeToggle" title="Cycle theme (Ctrl+K, T)" aria-label="Cycle color theme">◑</button>
+        <a
+            href="https://github.com/zidanomar"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="nav-link"
+            aria-label="GitHub profile (opens in new tab)"
+        >
+            Github
+            <span class="nav-link-arrow" aria-hidden="true">↗</span>
+        </a>
+        <button
+            class="theme-toggle"
+            id="themeToggle"
+            type="button"
+            title="Cycle theme (Ctrl+K, T)"
+            aria-label="Cycle color theme"
+        >◑</button>
     </nav>
 </header>
 
@@ -47,17 +62,35 @@
 }
 
 .nav-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.2rem;
     font-size: 0.85rem;
     color: var(--text-secondary);
     text-decoration: none;
     letter-spacing: 0.04em;
     transition: color 0.15s ease;
-    padding: 4px 0;
+    padding: 8px 4px;
+    min-height: 32px;
 }
 
-.nav-link:hover {
+.nav-link:hover,
+.nav-link:focus-visible {
     color: var(--text-primary);
     text-decoration: none;
+}
+
+.nav-link-arrow {
+    font-size: 0.75rem;
+    opacity: 0;
+    transform: translate(-3px, 1px);
+    transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.nav-link:hover .nav-link-arrow,
+.nav-link:focus-visible .nav-link-arrow {
+    opacity: 1;
+    transform: translate(0, 0);
 }
 
 .theme-toggle {
@@ -67,14 +100,19 @@
     cursor: pointer;
     font-size: 1rem;
     line-height: 1;
-    padding: 6px;
+    padding: 10px;
+    margin: -4px;
     border-radius: 4px;
     display: flex;
     align-items: center;
+    justify-content: center;
+    min-width: 36px;
+    min-height: 36px;
     transition: color 0.15s ease, border-color 0.15s ease, transform 0.2s ease;
 }
 
-.theme-toggle:hover {
+.theme-toggle:hover,
+.theme-toggle:focus-visible {
     color: var(--text-accent);
     border-color: var(--border-color);
 }
