@@ -2,6 +2,7 @@
 interface Education {
     year: string;
     school: string;
+    location: string;
     major: string;
 }
 
@@ -22,7 +23,10 @@ const { educations } = Astro.props;
                         <span class="edu-school">{edu.school}</span>
                         <span class="edu-year">{edu.year}</span>
                     </div>
-                    <span class="edu-major">{edu.major}</span>
+                    <div class="edu-meta">
+                        <span class="edu-major">{edu.major}</span>
+                         <span class="edu-location">{edu.location}</span>
+                    </div>
                 </div>
             ))}
         </div>
@@ -64,20 +68,37 @@ const { educations } = Astro.props;
 }
 
 .edu-school {
-    font-size: 0.875rem;
+    font-size: 1rem;
     color: var(--text-primary);
     font-weight: 500;
 }
 
 .edu-year {
-    font-size: 0.7rem;
+    font-size: 0.8rem;
     color: var(--text-accent);
     letter-spacing: 0.04em;
     flex-shrink: 0;
 }
 
+.edu-meta {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
 .edu-major {
-    font-size: 0.75rem;
+    font-size: 0.875rem;
     color: var(--text-secondary);
+}
+
+.edu-location {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    opacity: 0.6;
+}
+
+.edu-location::before {
+    content: "·";
+    margin-right: 0.5rem;
 }
 </style>

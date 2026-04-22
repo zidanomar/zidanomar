@@ -55,12 +55,12 @@ const { contacts } = Astro.props;
     align-items: baseline;
     gap: 0.5rem;
     margin-bottom: 2.5rem;
-    font-size: 0.875rem;
+    font-size: 1rem;
 }
 
 .prompt-sigil {
     color: var(--string-color);
-    font-size: 1rem;
+    font-size: 1.125rem;
     line-height: 1;
 }
 
@@ -130,7 +130,7 @@ const { contacts } = Astro.props;
 .item-index {
     position: relative;
     z-index: 1;
-    font-size: 0.65rem;
+    font-size: 0.75rem;
     color: var(--comment-color);
     letter-spacing: 0.08em;
     flex-shrink: 0;
@@ -145,7 +145,7 @@ const { contacts } = Astro.props;
 .item-label {
     position: relative;
     z-index: 1;
-    font-size: 0.7rem;
+    font-size: 0.8rem;
     color: var(--text-secondary);
     letter-spacing: 0.1em;
     text-transform: uppercase;
@@ -172,7 +172,7 @@ const { contacts } = Astro.props;
 .item-value {
     position: relative;
     z-index: 1;
-    font-size: 0.8rem;
+    font-size: 0.9rem;
     color: var(--text-primary);
     flex-shrink: 0;
     transition: color 0.2s ease;
@@ -185,7 +185,7 @@ const { contacts } = Astro.props;
 .item-arrow {
     position: relative;
     z-index: 1;
-    font-size: 0.75rem;
+    font-size: 0.875rem;
     color: var(--accent-color);
     opacity: 0;
     transform: translate(-4px, 2px);
@@ -200,7 +200,7 @@ const { contacts } = Astro.props;
 
 
 @media (max-width: 768px) {
-    .item-value { font-size: 0.75rem; }
+    .item-value { font-size: 0.875rem; }
     .item-arrow { opacity: 1; transform: none; }
     .contact-item { gap: 0.5rem; padding: 0.75rem 0.5rem; }
     .item-dots { display: none; }

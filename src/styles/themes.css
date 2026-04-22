@@ -183,40 +183,6 @@
 }
 
 /* Synthwave '84 Theme */
-[data-theme="synthwave-84"] {
-    --bg-primary: #2b213a;
-    --bg-secondary: #241b2f;
-    --bg-tertiary: #34294f;
-    --bg-hover: #3d3356;
-    --border-color: #495495;
-    --text-primary: #ffffff;
-    --text-secondary: #b6b1b1;
-    --text-accent: #ff7edb;
-    --keyword-color: #fede5d;
-    --type-color: #ff7edb;
-    --string-color: #ff8b39;
-    --comment-color: #848bbd;
-    --function-color: #36f9f6;
-    --number-color: #f97e72;
-    --constant-color: #f97e72;
-    --package-color: #36f9f6;
-    --tab-active: #2b213a;
-    --status-bar-bg: #241b2f;
-    --accent-color: #ff7edb;
-
-    /* Shiki Theme Variables */
-    --astro-code-color-text: var(--text-primary);
-    --astro-code-color-background: var(--bg-primary); 
-    --astro-code-token-constant: var(--constant-color);
-    --astro-code-token-string: var(--string-color);
-    --astro-code-token-comment: var(--comment-color);
-    --astro-code-token-keyword: var(--keyword-color);
-    --astro-code-token-parameter: var(--text-accent);
-    --astro-code-token-function: var(--function-color);
-    --astro-code-token-string-expression: var(--string-color);
-    --astro-code-token-punctuation: var(--text-secondary);
-    --astro-code-token-link: var(--text-accent);
-}
 
 /* Nord Theme */
 [data-theme="nord"] {

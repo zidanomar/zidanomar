@@ -107,19 +107,6 @@ const slug = (s: string) => s.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(
         opacity 0.55s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
-.proj-card::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    background: linear-gradient(
-        135deg,
-        color-mix(in srgb, var(--accent-color) 6%, transparent) 0%,
-        transparent 40%
-    );
-    opacity: 0;
-    transition: opacity 0.3s ease;
-}
 
 .proj-card--link:hover {
     transform: translateY(-2px);
@@ -129,9 +116,6 @@ const slug = (s: string) => s.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(
         0 16px 36px -16px color-mix(in srgb, var(--accent-color) 35%, rgba(0, 0, 0, 0.5));
 }
 
-.proj-card:hover::before {
-    opacity: 1;
-}
 
 /* ── Chrome / title bar ── */
 .proj-chrome {
@@ -170,7 +154,7 @@ const slug = (s: string) => s.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(
     justify-self: start;
     height: 100%;
     padding: 0 0.75rem;
-    font-size: 0.72rem;
+    font-size: 0.8rem;
     background: var(--bg-secondary);
     border-left: 1px solid var(--border-color);
     border-right: 1px solid var(--border-color);
@@ -228,7 +212,7 @@ const slug = (s: string) => s.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(
     display: inline-flex;
     align-items: center;
     gap: 0.4rem;
-    font-size: 0.6rem;
+    font-size: 0.7rem;
     letter-spacing: 0.14em;
     text-transform: uppercase;
     color: var(--text-secondary);
@@ -262,7 +246,7 @@ const slug = (s: string) => s.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
-    font-size: 1rem;
+    font-size: 1.125rem;
     font-weight: 600;
     color: var(--text-primary);
     letter-spacing: -0.005em;
@@ -276,7 +260,7 @@ const slug = (s: string) => s.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(
 }
 
 .proj-arrow {
-    font-size: 0.8rem;
+    font-size: 0.9rem;
     color: var(--accent-color);
     opacity: 0;
     transform: translate(-3px, 2px);
@@ -289,7 +273,7 @@ const slug = (s: string) => s.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(
 }
 
 .proj-subtitle {
-    font-size: 0.75rem;
+    font-size: 0.875rem;
     color: var(--text-secondary);
     line-height: 1.6;
     margin-bottom: 1rem;
@@ -303,7 +287,7 @@ const slug = (s: string) => s.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(
 }
 
 .proj-tags span {
-    font-size: 0.625rem;
+    font-size: 0.7rem;
     color: var(--text-secondary);
     border: 1px solid var(--border-color);
     padding: 2px 8px;
@@ -326,7 +310,7 @@ const slug = (s: string) => s.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(
 }
 
 .proj-work li {
-    font-size: 0.8rem;
+    font-size: 0.9rem;
     color: var(--text-secondary);
     line-height: 1.7;
     padding-left: 1rem;

@@ -18,7 +18,7 @@ const {
 		<meta charset="UTF-8" />
 		<meta name="description" content={description} />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="icon" type="image/png" href="/memoji.png" />
 		<meta name="generator" content={Astro.generator} />
 		
 		<title>{title}</title>
@@ -40,7 +40,7 @@ const {
 			(function() {
 				const STORAGE_KEY = 'theme';
 				const DEFAULT_THEME = 'ayu-mirage';
-				const THEMES = ['ayu-dark', 'ayu-mirage', 'ayu-light', 'monokai', 'dracula', 'synthwave-84', 'nord', 'solarized-dark', 'github-dark', 'night-owl', 'one-dark-pro'];
+				const THEMES = ['ayu-dark', 'ayu-mirage', 'ayu-light', 'monokai', 'dracula', 'nord', 'solarized-dark', 'github-dark', 'night-owl', 'one-dark-pro'];
 				
 				const saved = localStorage.getItem(STORAGE_KEY);
 				const theme = (saved && THEMES.includes(saved)) ? saved : DEFAULT_THEME;

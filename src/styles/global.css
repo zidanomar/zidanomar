@@ -55,7 +55,9 @@ a:hover {
 
 /* ── Reduced motion ── */
 @media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
+  *,
+  *::before,
+  *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
@@ -98,13 +100,13 @@ a:hover {
 }
 
 .section-inner {
-  max-width: 600px;
+  max-width: 720px;
   margin: 0 auto;
   width: 100%;
 }
 
 .section-heading {
-  font-size: 0.65rem;
+  font-size: 0.75rem;
   color: var(--text-secondary);
   font-weight: 400;
   letter-spacing: 0.16em;
